@@ -82,7 +82,7 @@ local plugins = {
       "rcarriga/nvim-dap-ui",
     },
     config = function(_, opts)
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      local path = "~/.pyenv/shims/python"
       require("dap-python").setup(path)
       require("core.utils").load_mappings("pythonfordap")
     end,

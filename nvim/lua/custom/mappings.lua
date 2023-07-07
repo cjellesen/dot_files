@@ -26,6 +26,8 @@ M.pythonfordap = {
     ["<leader>dpr"] = {
       function()
         require('dap-python').test_method()
+        -- local config = require("dap").configurations.python
+        -- require("dap").run(config)
       end
     }
   }
