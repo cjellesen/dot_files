@@ -1,0 +1,8 @@
+-- https://github.com/mfussenegger/nvim-dap-python
+-- https://github.com/microsoft/debugpy
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#Python
+-- https://github.com/mfussenegger/nvim-dap/tree/master
+-- https://github.com/mfussenegger/nvim-dap/blob/dd778f65dc95323f781f291fb7c5bf3c17d057b1/doc/dap.txt#L375
+-- https://github.com/mfussenegger/nvim-dap/wiki/Local-and-Remote-Debugging-with-Docker
+-- https://alpha2phi.medium.com/neovim-for-beginners-python-remote-debugging-7dac13e2a469
+-- 
