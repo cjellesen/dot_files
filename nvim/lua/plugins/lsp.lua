@@ -62,18 +62,23 @@ require('mason-lspconfig').setup()
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+--
+--  If autocomplete of code snippets are not working uncomment all language servers except the
+--  one in question. I had an issue where pyright interferred and function parameters in golang
+--  and lua did not autocomplete as a result.
 local servers = {
   -- clangd = {},
   gopls = {
     gopls = {
+      staticcheck = true,
       completeUnimported = true,
-      usePlaceHolders = true,
+      usePlaceholders = true,
       analyses = {
         unusedparams = true,
       }
     },
   },
-  pyright = {},
+  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -82,6 +87,7 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      completion = { callSnippet = 'Replace' },
     },
   },
 }
