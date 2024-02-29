@@ -43,6 +43,9 @@ require("lazy").setup({
 		"navarasu/onedark.nvim",
 		priority = 1000,
 		config = function()
+			require("onedark").setup({
+				style = "cool",
+			})
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
@@ -89,6 +92,7 @@ require("lazy").setup({
 	require("plugins.lsp.autoformat"),
 	require("plugins.lsp.lsp"),
 	require("plugins.lsp.none-ls"),
+	require("plugins.comments"),
 	-- require 'kickstart.plugins.debug',
 }, {})
 
