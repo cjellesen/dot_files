@@ -1,0 +1,19 @@
+- name: Preinstall
+  become: true
+  pacman:
+    name:
+      - qt5-wayland  
+      - qt5ct
+      - qt6-wayland 
+      - qt6ct
+      - qt5-svg
+      - qt5-quickcontrols2
+      - qt5-graphicaleffects
+      - gtk3 # Needed for polkit-gnome
+      - polkit-gnome # Authentication agent - Replace this
+      - mako # Graphical notification daemon
+      - pipewire # Multimedia framework for audio/video
+      - wireplumber # Session/policy manager for pipewire
+ tags: 
+    - preinstall
+    - desktop

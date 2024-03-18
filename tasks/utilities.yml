@@ -1,0 +1,13 @@
+- name: utilities
+  become: true
+  pacman:
+    name:
+      - jq # JSON CLI processing tool
+      - pacman-contrib
+      - fzf
+      - git
+      - tar
+      - zip
+  tags: 
+    - utilities 
+    - desktop

@@ -1,0 +1,41 @@
+- name: Desktop 
+  become: true
+  pacman: 
+    name:
+      - hyprland
+      - xdg-desktop-portal-hyprland # XDG Desktop portal for Hyprland
+      - wl-clipboard # Clipboard utilities
+      - cliphist # Clipboard history manager
+      - kitty # Terminal
+      - waybar # Customizable status bar 
+      - swww # Animated wallpaper daemon
+      - swaylock-effects # Screen locking utility
+      - wofi # Menu program
+      - wlogout # Logout menu
+      - swappy # Snapshot/editor tool
+      - grim # Screenshot utility
+      - slurp # Selector utility
+      - thunar # File manager
+      - btop # Resource monitor
+      - firefox # Browser
+      - mpv # Media player
+      - pamixer # Mixer utility for Pulse Audio
+      - pavucontrol # GUI for volume control
+      - brightnessctl # Device brightness control
+      - bluez # Bluetooth daeomon
+      - bluez-utils # Dev/Debug utility for Bluetooth
+      - blueman # Bluetooth manager 
+      - network-manager-applet # Network manager 
+      - gvfs # Gnome virtual file system 
+      - thunar-archive-plugin # Enables create/extract functionality for the thunar file manager 
+      - file-roller # Archive manager
+      - starship # Cross-shell prompt 
+      - papirus-icon-theme # Icon theme
+      - ttf-jetbrains-mono-nerd # Font package 
+      - noto-fonts-emoji # Emoji fonts 
+      - xfce4-settings # XFCE settings manager
+      - nwg-look-bin # Settings editor
+      - sddm # Display manager
+  tags: 
+    - install
+    - desktop
