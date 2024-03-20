@@ -3,17 +3,10 @@ local none_ls_config = function()
 	local null_ls = require("null-ls")
 	local null_ls_utils = require("null-ls.utils")
 
+	local formatters_to_install = require("plugins.lsp.lang_format_def").Formatters
 	-- local formatters = require("plugins.lsp.lang_format_def").Formatters
 	mason_null_ls.setup({
-		ensure_installed = {
-			"stylua", -- lua formatter
-			"black", -- python formatter
-			"flake8", -- python linter
-			"mypy",
-			"gofumpt",
-			"goimports",
-			"golines",
-		},
+		ensure_installed = formatters_to_install,
 		automatic_installation = false,
 	})
 
@@ -34,8 +27,8 @@ local none_ls_config = function()
 			formatting.stylua,
 
 			-- Python
-			formatting.black,
-			diagnostics.flake8,
+			--formatting.black,
+			formatting.black.with({ extra_args = { string.format("-l %s", vim.o.colorcolumn) } }),
 			diagnostics.mypy.with({
 				extra_args = function()
 					local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"

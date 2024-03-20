@@ -42,11 +42,11 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons"},
-    opts = {}
-  },
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 
 	require("plugins.gitsigns"),
 
@@ -101,7 +101,7 @@ require("lazy").setup({
 	require("plugins.lsp.autoformat"),
 	require("plugins.lsp.lsp"),
 	require("plugins.lsp.none-ls"),
-  --require("plugins.lsp.lang_formatter")
+	--require("plugins.lsp.lang_formatter")
 	require("plugins.comments"),
 	-- require 'kickstart.plugins.debug',
 }, {})
@@ -119,6 +119,8 @@ require("which-key").register({
 	["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
 	["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 })
+
+vim.keymap.set("n", "<leader>t", "<Cmd>Neotree toggle<CR>", { silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
