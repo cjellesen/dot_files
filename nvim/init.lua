@@ -3,7 +3,6 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
 require("options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -70,6 +69,9 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.lsp.autoformat"),
+
+	{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+
 	require("plugins.lsp.lsp"),
 	require("plugins.lsp.none-ls"),
 	require("plugins.cmp"),
