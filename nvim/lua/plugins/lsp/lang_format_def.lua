@@ -47,7 +47,7 @@ M.Servers = {
 					desc = "[G]oto [R]eferences",
 				},
 				{
-					"gi",
+					"gI",
 					function()
 						require("omnisharp_extended").telescope_lsp_implementation()
 					end,
