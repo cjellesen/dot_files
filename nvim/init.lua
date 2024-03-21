@@ -75,6 +75,11 @@ require("lazy").setup({
 	require("plugins.cmp"),
 
 	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+
+	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
 		keys = {
@@ -176,4 +181,4 @@ require("which-key").register({
 })
 vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true })
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 e
