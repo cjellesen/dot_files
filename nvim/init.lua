@@ -29,7 +29,6 @@ require("lazy").setup({
 
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-rhubarb",
-	-- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		-- Theme inspired by Atom
 		"navarasu/onedark.nvim",
@@ -37,6 +36,14 @@ require("lazy").setup({
 		config = function()
 			require("onedark").setup({
 				style = "cool",
+				transparant = false,
+				highlights = {
+					--["@keyword"] = { fg = "#0000ff" },
+					--["@string"] = { fg = "#0000ff" },
+					--["@function"] = { fg = "#0000ff" },
+					--["@function.builtin"] = { fg = "#0059ff" },
+					--["@class"] = { fg = "#0000ff" },
+				},
 			})
 			vim.cmd.colorscheme("onedark")
 		end,
