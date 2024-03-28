@@ -68,7 +68,7 @@ M.Formatters = {
 	"golines", -- Golang
 	"black", -- Python
 	"mypy", -- Python
-	"csharpier", -- CSharp
+	"csharpier", -- CSharpier won't be installed via the tool, so install it via dotnet tool and place in /bin directory.
 }
 
 return M

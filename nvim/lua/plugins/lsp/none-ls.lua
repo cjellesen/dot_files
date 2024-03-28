@@ -7,7 +7,7 @@ local none_ls_config = function()
 	-- local formatters = require("plugins.lsp.lang_format_def").Formatters
 	mason_null_ls.setup({
 		ensure_installed = formatters_to_install,
-		automatic_installation = false,
+		automatic_installation = true,
 	})
 
 	-- for conciseness
@@ -40,10 +40,14 @@ local none_ls_config = function()
 			formatting.gofmt,
 			formatting.goimports,
 			formatting.golines,
+
+			-- CSharp
+			formatting.csharpier,
 		},
 		-- configure format on save
 		on_attach = function(current_client, bufnr)
 			if current_client.supports_method("textDocument/formatting") then
+				vim.notify("Client: " .. current_client.name .. " supports formatting", vim.log.levels.INFO)
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					group = augroup,
