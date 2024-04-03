@@ -15,7 +15,6 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 --  You can also configure plugins after the setup call,
@@ -38,11 +37,10 @@ require("lazy").setup({
 				style = "cool",
 				transparant = false,
 				highlights = {
-					--["@keyword"] = { fg = "#0000ff" },
-					--["@string"] = { fg = "#0000ff" },
-					--["@function"] = { fg = "#0000ff" },
-					--["@function.builtin"] = { fg = "#0059ff" },
-					--["@class"] = { fg = "#0000ff" },
+					-- ["@lsp.type.enum"] = { fg = "#b8cee3" },
+					-- ["@lsp.type.interface"] = { fg = "" },
+					["@lsp.type.struct"] = { fg = "#b8cee3" },
+					-- ["@type"] = { fg = "#000000" },
 				},
 			})
 			vim.cmd.colorscheme("onedark")

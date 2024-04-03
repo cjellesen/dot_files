@@ -10,6 +10,7 @@ M.Servers = {
 			staticcheck = true,
 			completeUnimported = true,
 			usePlaceholders = true,
+			semanticTokens = true,
 			analyses = {
 				unusedparams = true,
 			},
