@@ -126,17 +126,23 @@ require("custom_functions")
 -- document existing key chains
 require("which-key").register({
 	["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-	["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-	["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
-	["<leader>h"] = { name = "[H]over", _ = "which_key_ignore" },
-	["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-	["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-	["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+	["<leader>g"] = { name = "[G]reb Search", _ = "which_key_ignore" },
+	["<leader>s"] = { name = "[S]earch [F]iles", _ = "which_key_ignore" },
+	["<leader>t"] = { name = "[T]ab Management", _ = "which_key_ignore" },
+	["<leader>f"] = { name = "[F]le Browser", _ = "which_key_ignore" },
+	["<leader>b"] = { name = "[B]rowser", _ = "which_key_ignore" },
 })
-vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+
+-- Opens a file browser
+vim.keymap.set("n", "<space>fb", "Telescope file_browser<CR>", { desc = "Open [F]ile [B]rowser" })
 
 -- open file_browser with the path of the current buffer
-vim.keymap.set("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+vim.keymap.set(
+	"n",
+	"<space>fc",
+	":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+	{ desc = "Open [F]ile browser in [C]urrent directory" }
+)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 e

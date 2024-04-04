@@ -22,6 +22,7 @@ vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.opt.autoindent = true -- Use current indent level when starting a new line
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -45,5 +46,10 @@ vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
 vim.opt.colorcolumn = "120"
+vim.opt.background = "dark"
+
+vim.opt.backspace = "indent,eol,start" -- Allow backspace on indent, end of line or insert mode start position
+
+vim.opt.splitright = true -- Always split right
+vim.opt.splitbelow = true -- Always split below

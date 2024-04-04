@@ -63,24 +63,22 @@ local telecscope_config = function()
 	end
 
 	-- See `:help telescope.builtin`
-	nmap("n", "<leader>?", require("telescope.builtin").oldfiles, "[?] Recent files")
 	nmap("n", "<leader><space>", require("telescope.builtin").buffers, "[ ] Find existing buffers")
-	nmap("n", "<leader>/", function()
+	nmap("n", "<leader>sb", function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
 		require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 			winblend = 10,
 			previewer = false,
 		}))
-	end, "[/] Fuzzy buffer search")
+	end, "[S]earch in current [B]uffer")
 
-	nmap("n", "<leader>gf", require("telescope.builtin").git_files, "Search [G]it [F]iles")
+	nmap("n", "<leader>sg", require("telescope.builtin").git_files, "[S]earch [G]it Files")
 	nmap("n", "<leader>sf", require("telescope.builtin").find_files, "[S]earch [F]iles")
 	nmap("n", "<leader>sh", require("telescope.builtin").help_tags, "[S]earch [H]elp")
-	nmap("n", "<leader>sw", require("telescope.builtin").grep_string, "[S]earch current [W]ord")
-	nmap("n", "<leader>sg", require("telescope.builtin").live_grep, "[S]earch by [G]rep")
-	nmap("n", "<leader>gg", ":LiveGrepGitRoot<cr>", "Search [G]it Root with [G]rep")
+	nmap("n", "<leader>sw", require("telescope.builtin").grep_string, "[S]earch for [W]ord")
+	nmap("n", "<leader>gs", require("telescope.builtin").live_grep, "[G]rep [S]earch")
+	nmap("n", "<leader>gg", ":LiveGrepGitRoot<cr>", "[G]rep [G]it search")
 	nmap("n", "<leader>sd", require("telescope.builtin").diagnostics, "[S]earch [D]iagnostics")
-	nmap("n", "<leader>sr", require("telescope.builtin").resume, "[S]earch [R]esume")
 end
 
 -- Fuzzy Finder (files, lsp, etc)
