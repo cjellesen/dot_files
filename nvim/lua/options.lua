@@ -53,3 +53,5 @@ vim.opt.backspace = "indent,eol,start" -- Allow backspace on indent, end of line
 
 vim.opt.splitright = true -- Always split right
 vim.opt.splitbelow = true -- Always split below
+
+vim.opt.scrolloff = 10
