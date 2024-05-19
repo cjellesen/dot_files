@@ -60,6 +60,13 @@ M.Servers = {
 			enable_import_completion = true,
 		},
 	},
+
+	zls = {
+		zls = {
+			enable_autofix = true,
+			warn_style = true,
+		},
+	},
 }
 
 M.Formatters = {

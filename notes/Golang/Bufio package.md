@@ -1,0 +1,1 @@
+https://medium.com/@andreiboar/fundamentals-of-i-o-in-go-part-3-b7c8a9970a51
