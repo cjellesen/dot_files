@@ -14,4 +14,4 @@
 	- Chapter 10: Deploy Applications with Kubernetes Locally
 	- Chapter 11: Deploy Applications with Kubernetes to the Cloud
 
-https://www.saxo.com/dk/distributed-services-with-go_travis-jeffery_epub_9781680508383
+https://www.saxo.com/dk/distributed-services-with-go_travis-jeffery_paperback_9781680507607
