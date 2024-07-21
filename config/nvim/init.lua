@@ -27,6 +27,17 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 
 	"nvim-tree/nvim-web-devicons",
+
+	-- Useful plugin to show you pending keybinds.
+	{ "folke/which-key.nvim", opts = {} },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		options = { theme = "onedark" },
+		config = function()
+			require("lualine").setup({})
+		end,
+	},
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-rhubarb",
 	{
@@ -74,8 +85,6 @@ require("lazy").setup({
 			end
 		end,
 	},
-	-- Useful plugin to show you pending keybinds.
-	{ "folke/which-key.nvim", opts = {} },
 
 	{
 		"folke/todo-comments.nvim",
@@ -96,18 +105,8 @@ require("lazy").setup({
 require("keymappings")
 require("custom_functions")
 
--- document existing key chains
-require("which-key").register({
-	["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-	["<leader>g"] = { name = "[G]reb Search", _ = "which_key_ignore" },
-	["<leader>s"] = { name = "[S]earch [F]iles", _ = "which_key_ignore" },
-	["<leader>t"] = { name = "[T]ab Management", _ = "which_key_ignore" },
-	["<leader>f"] = { name = "[F]le Browser", _ = "which_key_ignore" },
-	["<leader>b"] = { name = "[B]rowser", _ = "which_key_ignore" },
-})
-
 -- Opens a file browser
-vim.keymap.set("n", "<space>fb", "Telescope file_browser<CR>", { desc = "Open [F]ile [B]rowser" })
+vim.keymap.set("n", "<space>fb", "Telescope file_browser<CR>", { desc = "[F]ile [B]rowser" })
 
 -- open file_browser with the path of the current buffer
 vim.keymap.set(
@@ -117,5 +116,14 @@ vim.keymap.set(
 	{ desc = "Open [F]ile browser in [C]urrent directory" }
 )
 
+-- document existing key chains
+require("which-key").add({
+	{ "<leader>w", group = "[W]indow Management" },
+	{ "<leader>c", group = "[C]ode" },
+	{ "<leader>s", group = "[S]earch" },
+	{ "<leader>t", group = "[T]ab Management" },
+	{ "<leader>f", group = "[F]le Browser" },
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 e
+-- vim: ts=2 sts=2 sw=2

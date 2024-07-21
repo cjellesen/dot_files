@@ -1,57 +1,26 @@
 local telecscope_config = function()
-	-- [[ Configure Telescope ]]
-	-- See `:help telescope` and `:help telescope.setup()`
 	require("telescope").setup({
-		defaults = {
-			mappings = {
-				i = {
-					["<C-u>"] = false,
-					["<C-d>"] = false,
-				},
+		-- You can put your default mappings / updates / etc. in here
+		--  All the info you're looking for is in `:help telescope.setup()`
+		--
+		-- defaults = {
+		--   mappings = {
+		--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+		--   },
+		-- },
+		-- pickers = {}
+		extensions = {
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown(),
 			},
 		},
 	})
 
-	-- Enable telescope fzf native, if installed
+	-- Enable Telescope extensions if they are installed
 	pcall(require("telescope").load_extension, "fzf")
+	pcall(require("telescope").load_extension, "ui-select")
 
-	-- Telescope live_grep in git root
-	-- Function to find the git root directory based on the current buffer's path
-	local function find_git_root()
-		-- Use the current buffer's path as the starting point for the git search
-		local current_file = vim.api.nvim_buf_get_name(0)
-		local current_dir
-		local cwd = vim.fn.getcwd()
-		-- If the buffer is not associated with a file, return nil
-		if current_file == "" then
-			current_dir = cwd
-		else
-			-- Extract the directory from the current file's path
-			current_dir = vim.fn.fnamemodify(current_file, ":h")
-		end
-
-		-- Find the Git root directory from the current file's path
-		local git_root =
-			vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
-		if vim.v.shell_error ~= 0 then
-			print("Not a git repository. Searching on current working directory")
-			return cwd
-		end
-		return git_root
-	end
-
-	-- Custom live_grep function to search in git root
-	local function live_grep_git_root()
-		local git_root = find_git_root()
-		if git_root then
-			require("telescope.builtin").live_grep({
-				search_dirs = { git_root },
-			})
-		end
-	end
-
-	vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
-
+	local builtin = require("telescope.builtin")
 	-- In this case, we create a function that lets us more easily define mappings specific
 	-- for LSP related items. It sets the mode, buffer and description for us each time.
 	local nmap = function(mode, keys, func, desc)
@@ -63,42 +32,49 @@ local telecscope_config = function()
 	end
 
 	-- See `:help telescope.builtin`
-	nmap("n", "<leader><space>", require("telescope.builtin").buffers, "[ ] Find existing buffers")
 	nmap("n", "<leader>sb", function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
-		require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 			winblend = 10,
 			previewer = false,
 		}))
 	end, "[S]earch in current [B]uffer")
 
-	nmap("n", "<leader>sg", require("telescope.builtin").git_files, "[S]earch [G]it Files")
-	nmap("n", "<leader>sf", require("telescope.builtin").find_files, "[S]earch [F]iles")
-	nmap("n", "<leader>sh", require("telescope.builtin").help_tags, "[S]earch [H]elp")
-	nmap("n", "<leader>sw", require("telescope.builtin").grep_string, "[S]earch for [W]ord")
-	nmap("n", "<leader>gs", require("telescope.builtin").live_grep, "[G]rep [S]earch")
-	nmap("n", "<leader>gg", ":LiveGrepGitRoot<cr>", "[G]rep [G]it search")
-	nmap("n", "<leader>sd", require("telescope.builtin").diagnostics, "[S]earch [D]iagnostics")
+	nmap("n", "<leader>sh", builtin.help_tags, "[S]earch [H]elp")
+	nmap("n", "<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
+	nmap("n", "<leader>sf", builtin.find_files, "[S]earch [F]iles")
+	nmap("n", "<leader>ss", builtin.builtin, "[S]earch [S]elect Telescope")
+	nmap("n", "<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
+	nmap("n", "<leader>sg", builtin.live_grep, "[S]earch by [G]rep")
+	nmap("n", "<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
+	nmap("n", "<leader>sr", builtin.resume, "[S]earch [R]esume")
+	nmap("n", "<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
 end
 
 -- Fuzzy Finder (files, lsp, etc)
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VimEnter",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		-- Fuzzy Finder Algorithm which requires local dependencies to be built.
-		-- Only load if `make` is available. Make sure you have the system
-		-- requirements installed.
-		{
+		{ -- If encountering errors, see telescope-fzf-native README for installation instructions
 			"nvim-telescope/telescope-fzf-native.nvim",
-			-- NOTE: If you are having trouble with this installation,
-			--       refer to the README for telescope-fzf-native for more instructions.
+
+			-- `build` is used to run some command when the plugin is installed/updated.
+			-- This is only run then, not every time Neovim starts up.
 			build = "make",
+
+			-- `cond` is a condition used to determine whether this plugin should be
+			-- installed and loaded.
 			cond = function()
 				return vim.fn.executable("make") == 1
 			end,
-			config = telecscope_config,
 		},
+		{ "nvim-telescope/telescope-ui-select.nvim" },
+
+		-- Useful for getting pretty icons, but requires a Nerd Font.
+		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
+	config = telecscope_config,
 }

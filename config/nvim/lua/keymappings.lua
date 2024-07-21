@@ -15,6 +15,9 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "[T]ab: [N]ext" })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "[T]ab: [P]revious" })
 vim.keymap.set("n", "<leader>tb", "<cmd>tabnew %<CR>", { desc = "[T]ab: Open current [B]uffer in new tab" })
 
+-- Window mangement
+vim.keymap.set("n", "<leader>w", "<C-w>", { desc = "[W]indow mangement" })
+
 -- Navigating windows
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Navigate to left hand window" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate to right hand window" })
