@@ -26,6 +26,7 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",
 
+	"nvim-tree/nvim-web-devicons",
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-rhubarb",
 	{
@@ -53,8 +54,6 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.lsp.autoformat"),
-
-	{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
 
 	require("plugins.lsp.lsp"),
 	require("plugins.lsp.none-ls"),

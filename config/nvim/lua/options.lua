@@ -55,3 +55,4 @@ vim.opt.splitright = true -- Always split right
 vim.opt.splitbelow = true -- Always split below
 
 vim.opt.scrolloff = 10
+vim.g.have_nerd_font = true

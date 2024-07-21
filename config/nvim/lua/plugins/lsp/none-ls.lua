@@ -40,9 +40,6 @@ local none_ls_config = function()
 			formatting.gofmt,
 			formatting.goimports,
 			formatting.golines,
-
-			-- CSharp
-			formatting.csharpier,
 		},
 		-- configure format on save
 		on_attach = function(current_client, bufnr)
