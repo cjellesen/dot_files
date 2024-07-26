@@ -36,6 +36,7 @@ M.Servers = {
 
 M.Formatters = {
 	"stylua", -- Lua
+	"staticcheck", -- Golang
 	"gofumpt", -- Golang
 	"goimports_reviser", -- Golang
 	"golines", -- Golang
