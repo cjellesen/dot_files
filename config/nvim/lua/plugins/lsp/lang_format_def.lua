@@ -11,6 +11,7 @@ M.Servers = {
 			completeUnimported = true,
 			usePlaceholders = true,
 			semanticTokens = true,
+			gofumpt = true,
 			analyses = {
 				unusedparams = true,
 			},

@@ -8,18 +8,6 @@ local config_function = function()
 	ft.set("reason", { "//%s", "/*%s*/" })
 end
 
---return {
---	"numToString/Comment.nvim",
---	event = { "BufEnter" },
---	dependencies = {
---		"JoosepAlviste/nvim-ts-context-commentstring",
---		config = function()
---			require("ts_context_commentstring").setup({ enable_autocmd = false })
---		end,
---	},
---	config = config_function(),
---}
-
 return {
 	{
 		"numToStr/Comment.nvim",

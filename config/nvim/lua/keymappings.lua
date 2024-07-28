@@ -23,3 +23,11 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Navigate to left hand window" }
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate to right hand window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate to upper window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navitgate to lower window" })
+
+-- Diagnostics
+vim.keymap.set(
+	"n",
+	"<leader>e",
+	vim.diagnostic.open_float,
+	{ desc = "Expands the diagnostic information in case of length issues" }
+)
