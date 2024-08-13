@@ -1,0 +1,39 @@
+set scrolloff=20
+set incsearch
+set relativenumber
+set hlsearch
+set visualbell
+set noerrorbells
+let mapleader=" "
+nnoremap <Space> <Nop>
+
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+
+" Navigation
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+imap jj <Esc>
+imap kk <Esc>
+""vnoremap <Leader>p "_dP
+
+nmap <leader>sf <Action>(FindInPath)
+nmap <leader>sg <Action>(SearchEverywhere)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>cr <Action>(RenameElement)
+nmap <leader>cq <Action>(Refactorings.QuickListPopupAction)
+
+nmap gi <Action>(GotoImplementation)
+"" nmap ca <Action>(ShowIntentionActions)
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
