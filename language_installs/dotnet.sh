@@ -2,8 +2,8 @@
 
 wget -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh
 chmod +x ./dotnet-install.sh
-sudo mkdir -p /usr/share/dotnet
-sudo ./dotnet-install.sh --install-dir /usr/share/dotnet --channel 8.0
+sudo mkdir -p $HOME/.dotnet
+sudo ./dotnet-install.sh --install-dir $HOME/.dotnet --channel 8.0
 rm ./dotnet-install.sh
 
 # Add the 2 lines below to either the .bashrc or the .bash_profile depending on preference
