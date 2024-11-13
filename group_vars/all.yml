@@ -1,9 +1,8 @@
 default_roles:
   - docker
-  #- fzf
+  - fzf
   - gh
   - go
   - azurecli
-  # I don't think focal has a PPA for neovim, so change the install to use the .appimage 
-  #- neovim
+  - neovim
 

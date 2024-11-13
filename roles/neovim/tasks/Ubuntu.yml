@@ -1,20 +1,53 @@
 ---
-- name: "Neovim | {{ ansible_distribution }} | Dependencies"
-  ansible.builtin.apt:
-    name:
-      - cmake
-      - curl
-      - pkg-config
-      - libtool
-      - unzip
-      - ansible-lint
-      - ripgrep
-    state: present
+- name: "Neovim | Querying Github releases"
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/neovim/neovim/releases
+  register: nvim_github_latest_tag 
+  changed_when: false
+
+- name: "Neovim | {{ ansible_distribution }} | Querying latest release"
+  ansible.builtin.set_fact:
+    nvim_github_latest_tag: "{{ nvim_github_latest_tag.json[0].assets[0].browser_download_url }}"
+
+- name: "Neovim | {{ ansible_distribution }} | Print Neovim download URL"
+  ansible.builtin.debug:
+    var: nvim_github_latest_tag
+
+- name: "Neovim | {{ ansible_distribution }} | Ensuring clean download destination"
+  ansible.builtin.file:
+    path: "/tmp/nvim.tar.gz"
+    state: absent
   become: true
 
-- name: "Neovim | {{ ansible_distribution }} | Install"
-  ansible.builtin.apt_repository:
-    repo: ppa:neovim-ppa/unstable
-    state: present
-    mode: "0644"
+- name: "Neovim | {{ ansible_distribution }} | Downloading latest Neovim release"
+  ansible.builtin.get_url:
+    url: "{{ nvim_github_latest_tag }}"
+    dest: /tmp
+    mode: 0644
+    force: true
+  register: download_destination
+
+
+- name: "Neovim | {{ ansible_distribution }} | Extract Neovim tar file"
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "{{ download_destination.dest }}"
+    dest: /tmp
+  register: archive_contents
   become: true
+
+- name: "Neovim | {{ ansible_distribution }} | Installing Neovim"
+  ansible.builtin.copy:
+    remote_src: true
+    # This is a hard coded value, I cannot get the unzip directory from the unarchive method in order to set dynamically
+    src: "/tmp/nvim-linux64"
+    dest: "/opt"
+    owner: "{{ host_user }}"
+    group: "{{ host_user }}"
+    force: true
+  become: true
+  register: copy_contents
+
+- name: "Neovim | {{ ansible_distribution }} | Install directory"
+  ansible.builtin.debug:
+    var: copy_contents.dest
