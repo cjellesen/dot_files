@@ -1,0 +1,13 @@
+---
+- name: Cleanup Kubectl install file
+  ansible.builtin.file:
+    path: "/tmp/{{ kubectl_file }}"
+    state: absent
+  become: true
+
+
+- name: Cleanup Kubectl checksum file
+  ansible.builtin.file:
+    path: "/tmp/{{ kubectl_checksum_file }}"
+    state: absent
+  become: true

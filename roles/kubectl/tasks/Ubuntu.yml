@@ -1,0 +1,108 @@
+---
+- name: "Kubectl | Install dependencies"
+  ansible.builtin.apt:
+    pkg:
+      - 'curl'
+    state: present
+  register: apt_result
+  become: true
+  until: apt_result is success
+  retries: 1
+  delay: 2
+
+- name: "Kubectl | Define system architecture"
+  ansible.builtin.set_fact:
+    sysarch: "{{ ansible_machine | replace('x86_64', 'amd64') | replace('aarch64', 'arm64') }}"
+
+- name: "Kubectl | System architecture"
+  ansible.builtin.debug:
+    var: sysarch 
+
+- name: "Kubectl | Define system OS"
+  ansible.builtin.set_fact:
+    sysos: "{{ ansible_system | lower }}"
+
+- name: "Kubectl | System OS"
+  ansible.builtin.debug:
+    var: sysos
+
+- name: "Kubectl | Querying Latest Version"
+  ansible.builtin.uri:
+    url: https://dl.k8s.io/release/stable.txt
+    return_content: yes
+  register: kubectl_latest_version
+  changed_when: false
+
+- name: "Kubectl | Define install file"
+  ansible.builtin.set_fact:
+    kubectl_file: "kubectl"
+
+- name: "Kubectl | Define checksum file"
+  ansible.builtin.set_fact:
+    kubectl_checksum_file: "kubectl.sha256"
+
+- name: "Kubectl | Install"
+  block:
+    - name: "Kubectl | Ensure clean download destination (install file)"
+      ansible.builtin.file:
+        path: "/tmp/{{ kubectl_file }}"
+        state: absent
+      become: true
+
+    - name: "Kubectl | Ensure clean download destination (checksum file)"
+      ansible.builtin.file:
+        path: "/tmp/{{ kubectl_checksum_file }}"
+        state: absent
+      become: true
+
+    - name: "Kubectl | Downloading Kubectl install file"
+      ansible.builtin.get_url:
+        url: "https://dl.k8s.io/{{ kubectl_latest_version.content }}/bin/{{ sysos }}/{{ sysarch }}/kubectl"
+        dest: /tmp/
+        mode: 0644
+        force: true
+      notify:
+        - Cleanup Kubectl install file
+
+    - name: "Kubectl | Computing checksum of install file"
+      shell: sha256sum /tmp/{{ kubectl_file }} | awk '{print $1}'
+      register: kubectl_install_file_checksum
+
+    - name: "Kubectl | Downloading Kubectl checksum file"
+      ansible.builtin.get_url:
+        url: "https://dl.k8s.io/{{ kubectl_latest_version.content }}/bin/{{ sysos }}/{{ sysarch }}/kubectl.sha256"
+        dest: /tmp/
+        mode: 0644
+        force: true
+      notify:
+        - Cleanup Kubectl checksum file
+    
+    - name: "Kubectl | Parsing expected checksum"
+      shell: echo "$(cat /tmp/{{ kubectl_checksum_file }})"
+      register: kubectl_expected_checksum
+    
+    - name: "Kubectl | Compare checksums"
+      vars:
+        expected: "kubectl: OK"
+      assert:
+        that:
+          - kubectl_install_file_checksum.stdout == kubectl_expected_checksum.stdout
+        fail_msg: "Kubectl checksum does not match"
+        success_msg: "Kubectl install file successfully validated"
+
+    - name: "Kubectl | Remove any current Kubectl installations"
+      ansible.builtin.file:
+        path: /usr/local/bin/kubectl
+        state: absent
+      become: true
+
+    - name: "Kubectl | Install Kubectl"
+      ansible.builtin.copy:
+        remote_src: true
+        src: /tmp/kubectl
+        dest: /usr/local/bin/kubectl
+        owner: "{{ host_user }}"
+        group: "{{ host_user }}"
+        mode:  "+x"
+        force: true
+      become: true
