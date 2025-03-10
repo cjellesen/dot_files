@@ -28,13 +28,13 @@ local none_ls_config = function()
 
 			-- Python
 			--formatting.black,
-			formatting.black.with({ extra_args = { string.format("-l %s", vim.o.colorcolumn) } }),
-			diagnostics.mypy.with({
-				extra_args = function()
-					local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
-					return { "--python-executable", virtual .. "/bin/python3" }
-				end,
-			}),
+			--formatting.black.with({ extra_args = { string.format("-l %s", vim.o.colorcolumn) } }),
+			--diagnostics.mypy.with({
+			--	extra_args = function()
+			--		local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+			--		return { "--python-executable", virtual .. "/bin/python3" }
+			--	end,
+			--}),
 
 			-- Go
 			formatting.gofmt,
@@ -59,6 +59,8 @@ local none_ls_config = function()
 						})
 					end,
 				})
+			else
+				vim.notify("Client: " .. current_client.name .. "does not support formatting", vim.log.levels.INFO)
 			end
 		end,
 	})

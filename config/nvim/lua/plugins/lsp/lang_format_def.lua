@@ -17,8 +17,43 @@ M.Servers = {
 			},
 		},
 	},
-	pyright = {},
-
+	pyright = {
+		pyright = {
+			disableOrganizedImports = true,
+		},
+		python = {
+			analysis = {
+				ignore = { "*" },
+			},
+		},
+	},
+	ruff = {
+		ruff = {
+			init_options = {
+				settings = {
+					organizeImports = true,
+					fixAll = true,
+					showSyntaxErrors = true,
+					logLevel = "debug",
+					lint = {
+						enable = false,
+						extendSelect = {"I"},
+						quoteStyle = "double",
+						indentStyle = "space",
+						lineEnding = "auto",
+					},
+					codeAction = {
+						disableRuleComment = {
+							enable = false,
+						},
+						fixViolation = {
+							enable = true
+						},
+					}
+				},
+			}
+		}
+	},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -41,8 +76,8 @@ M.Formatters = {
 	"gofumpt", -- Golang
 	"goimports_reviser", -- Golang
 	"golines", -- Golang
-	"black", -- Python
-	"mypy", -- Python
+	--"black", -- Python
+	--"mypy", -- Python
 }
 
 return M
