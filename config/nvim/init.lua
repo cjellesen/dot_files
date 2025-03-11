@@ -63,6 +63,14 @@ require("lazy").setup({
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- or if using mini.icons/mini.nvim
+		-- dependencies = { "echasnovski/mini.icons" },
+		opts = {},
+	},
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 
@@ -80,6 +88,8 @@ require("lazy").setup({
 	},
 	require("plugins.lsp.lsp"),
 	require("plugins.lsp.conform"),
+	require("plugins.lsp.lint"),
+	require("plugins.lsp.trouble"),
 	require("plugins.cmp"),
 	require("plugins.autopairs"),
 	{

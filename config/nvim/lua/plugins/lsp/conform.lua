@@ -32,9 +32,14 @@ return { -- Autoformat
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "ruff_format" },
+			python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
 			go = { "gofumpt", "goimports_reviser", "golines" },
 			["_"] = { "trim_whitespace" },
+		},
+		formatters = {
+			ruff_format = {
+				prepend_args = { "--line-length 120" },
+			},
 		},
 	},
 }

@@ -39,6 +39,7 @@ return {
 						quoteStyle = "double",
 						indentStyle = "space",
 						lineEnding = "auto",
+						lineLength = 120,
 					},
 					codeAction = {
 						disableRuleComment = {
