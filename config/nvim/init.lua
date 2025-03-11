@@ -28,8 +28,11 @@ require("lazy").setup({
 
 	"nvim-tree/nvim-web-devicons",
 
+	-- Detect tabstop and shiftwidth automatically
+	"tpope/vim-rhubarb",
+
 	-- Useful plugin to show you pending keybinds.
-	{ "folke/which-key.nvim", opts = {} },
+	require("plugins.which-key"),
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -38,8 +41,6 @@ require("lazy").setup({
 			require("lualine").setup({})
 		end,
 	},
-	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-rhubarb",
 	{
 		-- Theme inspired by Atom
 		"navarasu/onedark.nvim",
@@ -64,11 +65,23 @@ require("lazy").setup({
 	},
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
-	require("plugins.lsp.autoformat"),
 
+	{
+		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+		-- used for completion, annotations and signatures of Neovim apis
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 	require("plugins.lsp.lsp"),
-	require("plugins.lsp.none-ls"),
+	require("plugins.lsp.conform"),
 	require("plugins.cmp"),
+	require("plugins.autopairs"),
 	{
 		"stevearc/dressing.nvim",
 		lazy = true,
@@ -93,37 +106,13 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	},
-
+	require("plugins.neo-tree"),
 	require("plugins.gitsigns"),
 	require("plugins.comments"),
 }, {})
 
 require("keymappings")
 require("custom_functions")
-
--- Opens a file browser
-vim.keymap.set("n", "<space>fb", "Telescope file_browser<CR>", { desc = "[F]ile [B]rowser" })
-
--- open file_browser with the path of the current buffer
-vim.keymap.set(
-	"n",
-	"<space>fc",
-	":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-	{ desc = "Open [F]ile browser in [C]urrent directory" }
-)
-
--- document existing key chains
-require("which-key").add({
-	{ "<leader>w", group = "[W]indow Management" },
-	{ "<leader>c", group = "[C]ode" },
-	{ "<leader>s", group = "[S]earch" },
-	{ "<leader>t", group = "[T]ab Management" },
-	{ "<leader>f", group = "[F]le Browser" },
-})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2

@@ -14,10 +14,17 @@ local treesitter_config = function()
 			"vimdoc",
 			"vim",
 			"bash",
+			"c_sharp",
+			"dockerfile",
+			"json",
+			"hcl",
+			"toml",
+			"zig",
+			"yaml",
 		},
 
 		-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-		auto_install = false,
+		auto_install = true,
 
 		highlight = { enable = true },
 		indent = { enable = true },
@@ -75,6 +82,20 @@ local treesitter_config = function()
 			},
 		},
 	}
+	vim.filetype.add({
+		extension = {
+			gotmpl = "gotmpl",
+		},
+		pattern = {
+			[".*/templates/.*%.tpl"] = "helm",
+			[".*/templates/.*%.ya?ml"] = "helm",
+			["helmfile.*%.ya?ml"] = "helm",
+		},
+	})
+
+	vim.filetype.add({
+		pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+	})
 
 	-- Disclaimer: This was from Kickstart Nvim and I do not know of adding the defer_fn here yields the same result as putting
 	-- it after the lazy setup in the init.lua file.

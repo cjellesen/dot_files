@@ -1,6 +1,4 @@
-local M = {}
-
-M.Servers = {
+return {
 	--  If autocomplete of code snippets are not working uncomment all language servers except the
 	--  one in question. I had an issue where pyright interferred and function parameters in golang
 	--  and lua did not autocomplete as a result.
@@ -37,7 +35,7 @@ M.Servers = {
 					logLevel = "debug",
 					lint = {
 						enable = false,
-						extendSelect = {"I"},
+						extendSelect = { "I" },
 						quoteStyle = "double",
 						indentStyle = "space",
 						lineEnding = "auto",
@@ -47,12 +45,12 @@ M.Servers = {
 							enable = false,
 						},
 						fixViolation = {
-							enable = true
+							enable = true,
 						},
-					}
+					},
 				},
-			}
-		}
+			},
+		},
 	},
 	lua_ls = {
 		Lua = {
@@ -69,15 +67,3 @@ M.Servers = {
 		},
 	},
 }
-
-M.Formatters = {
-	"stylua", -- Lua
-	"staticcheck", -- Golang
-	"gofumpt", -- Golang
-	"goimports_reviser", -- Golang
-	"golines", -- Golang
-	--"black", -- Python
-	--"mypy", -- Python
-}
-
-return M
