@@ -21,6 +21,15 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
 	-- NOTE: First, some plugins that don't require any configuration
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			flavour = "macchiato",
+			term_colors = true,
+		},
+	},
 
 	-- Git related plugins
 	"tpope/vim-fugitive",
@@ -36,33 +45,33 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		options = { theme = "onedark" },
+		options = { theme = "catppuccin" },
 		config = function()
 			require("lualine").setup({})
 		end,
 	},
-	{
-		-- Theme inspired by Atom
-		"navarasu/onedark.nvim",
-		priority = 1000,
-		config = function()
-			require("onedark").setup({
-				style = "darker",
-				transparent = false,
-				term_colors = true,
-				highlights = {
-					-- ["@lsp.type.enum"] = { fg = "#b8cee3" },
-					-- ["@lsp.type.interface"] = { fg = "" },
-					-- ["@lsp.type.struct"] = { fg = "#b8cee3" },
-					["@lsp.type.namespace"] = { fg = "#3cb043" },
-					-- ["@property"] = { fg = "#4287f5" },
-					-- ["@variable"] = { fg = "#a3ced4" },
-					-- ["@type"] = { fg = "#000000" },
-				},
-			})
-			vim.cmd.colorscheme("onedark")
-		end,
-	},
+	--{
+	--	-- Theme inspired by Atom
+	--	"navarasu/onedark.nvim",
+	--	priority = 1000,
+	--	config = function()
+	--		require("onedark").setup({
+	--			style = "darker",
+	--			transparent = false,
+	--			term_colors = true,
+	--			highlights = {
+	--				-- ["@lsp.type.enum"] = { fg = "#b8cee3" },
+	--				-- ["@lsp.type.interface"] = { fg = "" },
+	--				-- ["@lsp.type.struct"] = { fg = "#b8cee3" },
+	--				["@lsp.type.namespace"] = { fg = "#3cb043" },
+	--				-- ["@property"] = { fg = "#4287f5" },
+	--				-- ["@variable"] = { fg = "#a3ced4" },
+	--				-- ["@type"] = { fg = "#000000" },
+	--			},
+	--		})
+	--		vim.cmd.colorscheme("onedark")
+	--	end,
+	--},
 	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
@@ -94,19 +103,7 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	{
 		"stevearc/dressing.nvim",
-		lazy = true,
-		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
-		end,
+		opts = {},
 	},
 
 	{
@@ -119,10 +116,12 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.gitsigns"),
 	require("plugins.comments"),
+	require("plugins.noice"),
 }, {})
 
 require("keymappings")
 require("custom_functions")
 
+vim.cmd.colorscheme("catppuccin")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2
