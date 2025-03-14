@@ -24,6 +24,9 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate to right hand window" 
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate to upper window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navitgate to lower window" })
 
+vim.keymap.set("v", "<leader>t", "+y", { desc = "Copy to clipboard" })
+vim.keymap.set("n", "<leader>yy", "+yy", { desc = "Copy to line clipboard" })
+
 -- Diagnostics
 vim.keymap.set(
 	"n",
