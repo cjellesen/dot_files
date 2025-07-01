@@ -50,10 +50,13 @@ return { -- LSP Configuration & Plugins
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
-				-- Jump to the definition of the word under your cursor.
-				--  This is where a variable was first declared, or where a function is defined, etc.
-				--  To jump back, press <C-t>.
-				vim.keymap.set("n", "gd", ts_builtin.lsp_definitions, { desc = "[G]o to [D]efinition" })
+				-- Rename the variable under your cursor.
+				--  Most Language Servers support renaming across files, etc.
+				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
+
+				-- Execute a code action, usually your cursor needs to be on top of an error
+				-- or a suggestion from your LSP for this to activate.
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
 				-- Find references for the word under your cursor.
 				map("gr", ts_builtin.lsp_references, "[G]o to [R]eferences")
@@ -61,6 +64,15 @@ return { -- LSP Configuration & Plugins
 				-- Jump to the implementation of the word under your cursor.
 				--  Useful when your language has ways of declaring types without an actual implementation.
 				map("gI", ts_builtin.lsp_implementations, "[G]o to [I]mplementation")
+
+				-- WARN: This is not Goto Definition, this is Goto Declaration.
+				--  For example, in C this would take you to the header.
+				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+				-- Jump to the definition of the word under your cursor.
+				--  This is where a variable was first declared, or where a function is defined, etc.
+				--  To jump back, press <C-t>.
+				map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 
 				-- Jump to the type of the word under your cursor.
 				--  Useful when you're not sure what type a variable is and you want to see
@@ -75,21 +87,9 @@ return { -- LSP Configuration & Plugins
 				--  Similar to document symbols, except searches over your entire project.
 				-- map("<leader>ws", ts_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-				-- Rename the variable under your cursor.
-				--  Most Language Servers support renaming across files, etc.
-				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
-
-				-- Execute a code action, usually your cursor needs to be on top of an error
-				-- or a suggestion from your LSP for this to activate.
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
 				-- Opens a popup that displays documentation about the word under your cursor
 				--  See `:help K` for why this keymap.
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
-
-				-- WARN: This is not Goto Definition, this is Goto Declaration.
-				--  For example, in C this would take you to the header.
-				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 				---@param client vim.lsp.Client
@@ -208,7 +208,12 @@ return { -- LSP Configuration & Plugins
 		--    :Mason
 		--
 		--  You can press `g?` for help in this menu.
-		require("mason").setup()
+		require("mason").setup({
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry",
+			},
+		})
 
 		-- You can add other tools here that you want Mason to install
 		-- for you, so that they are available from within Neovim.

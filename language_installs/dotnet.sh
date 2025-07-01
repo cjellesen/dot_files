@@ -4,6 +4,7 @@ wget -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh
 chmod +x ./dotnet-install.sh
 sudo mkdir -p $HOME/.dotnet
 sudo ./dotnet-install.sh --install-dir $HOME/.dotnet --channel 8.0
+sudo ./dotnet-install.sh --install-dir $HOME/.dotnet --channel 9.0
 sudo ./dotnet-install.sh --install-dir $HOME/.dotnet --channel 3.1
 rm ./dotnet-install.sh
 
