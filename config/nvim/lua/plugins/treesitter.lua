@@ -2,15 +2,9 @@ local treesitter_config = function()
 	local options = {
 		-- Add languages to be installed here that you want installed for treesitter
 		ensure_installed = {
-			"c",
-			"cpp",
 			"go",
 			"lua",
 			"python",
-			"rust",
-			"tsx",
-			"javascript",
-			"typescript",
 			"vimdoc",
 			"vim",
 			"bash",
@@ -19,7 +13,6 @@ local treesitter_config = function()
 			"json",
 			"hcl",
 			"toml",
-			"zig",
 			"yaml",
 		},
 

@@ -1,5 +1,25 @@
+vim.lsp.config.roslyn = {
+    cmd = {
+        "/usr/local/bin/roslyn/Microsoft.CodeAnalysis.LanguageServer",
+        "--logLevel=Information",
+        "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.log.get_filename()),
+        "--stdio",
+    },
+    filetypes = {"cs"},
+	root_markers = {
+        ".csproj",
+        ".sln",
+		".git",
+	},
+}
+
 vim.lsp.enable({
-    "lua_ls"
+    "lua_ls",
+    "pyright",
+    "ruff",
+    "gopls",
+    "roslyn",
+    "yamlls"
 })
 
 vim.diagnostic.config({
@@ -18,9 +38,12 @@ vim.diagnostic.config({
         numhl = {
             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
             [vim.diagnostic.severity.WARN] = "WarningMsg",
-        },
+        }
     },
 })
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),

@@ -12,8 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    require("plugins/color_schema"),
-    require("plugins/telescope"),
-    require("plugins/treesitter"),
-    require("plugins/oil"),
+    require("plugins.color_schema"),
+    require("plugins.telescope"),
+    require("plugins.treesitter"),
+    require("plugins.oil"),
+    require("plugins.blink"),
+    require("plugins.roslyn"),
+    require("plugins.fzf-lua")
 })
