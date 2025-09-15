@@ -2,6 +2,12 @@ local theme = {
 	"catppuccin/nvim",
 	config = function()
 		require("catppuccin").setup({
+            custom_highlights = function(colors)
+                return {
+                    -- In order to find the given type use :Inspect while over the symbol of interest
+                    ["@lsp.type.enum.cs"] = { fg = colors.pink, style = { "bold" } },
+                }
+            end,
 			integrations = {
 				cmp = true,
 				gitsigns = true,
@@ -25,11 +31,6 @@ local theme = {
 		})
 
 		vim.cmd.colorscheme("catppuccin-macchiato")
-
-		-- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
-		for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-			vim.api.nvim_set_hl(0, group, {})
-		end
 	end,
 }
 
