@@ -19,5 +19,5 @@ require("lazy").setup({
     require("plugins.blink"),
     require("plugins.roslyn"),
     require("plugins.fzf-lua"),
-    require("plugins.conform")
+    require("plugins.conform"),
 })

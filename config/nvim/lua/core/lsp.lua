@@ -11,6 +11,31 @@ vim.lsp.config.roslyn = {
         ".sln",
         ".git",
     },
+    settings = {
+        ["csharp|background_analysis"] = {
+            dotnet_analyzer_diagnostics_scope = "fullSolution",
+            dotnet_compiler_diagnostics_scope = "fullSolution",
+        }
+    },
+    capabilities = {
+        textDocument = {
+            diagnostic = {
+                dynamicRegistration = true,
+            }
+        },
+        workspace = {
+            diagnostic = {
+                refreshSupport = true
+            }
+        },
+    },
+    on_attach = function(client)
+        client.server_capabilities.diagnosticProvider = {
+            interFileDependencies = true,
+            workspaceDiagnostics = true,
+            workDoneProgress = true
+        }
+    end
 }
 
 vim.lsp.enable({
