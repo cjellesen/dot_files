@@ -17,6 +17,7 @@ require("lazy").setup({
     require("plugins.treesitter"),
     require("plugins.oil"),
     require("plugins.blink"),
+    require("plugins.blink_pairs"),
     require("plugins.roslyn"),
     require("plugins.fzf-lua"),
     require("plugins.conform"),
