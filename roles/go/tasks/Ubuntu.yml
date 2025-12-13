@@ -110,6 +110,17 @@
       become: true
       notify:
         - Remove extracted go directory
-  when: go_latest_version not in current_go_version.stdout|default('') 
-  
+  when: go_latest_version not in current_go_version.stdout|default('')
+
 # For now add the following manually to the .bashrc "export PATH=$PATH:/usr/local/go/bin"
+- name: Cleanup go downloaded tar
+  ansible.builtin.file:
+    path: "/tmp/{{ go_file }}.tar.gz"
+    state: absent
+  become: true
+
+- name: Remove extracted go directory
+  ansible.builtin.file:
+    path: /tmp/go
+    state: absent
+  become: true
