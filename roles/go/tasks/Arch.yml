@@ -1,0 +1,30 @@
+---
+- name: "Go-Lang | Installing the golang language"
+  community.general.pacman:
+    name: go
+    update_cache: true
+    state: present
+  become: true
+
+# For now add the following manually to the .bashrc "export PATH=$PATH:/usr/local/go/bin"
+
+- name: "Go-Lang | Install the golang language server (gopls)"
+  community.general.pacman:
+    name: gopls
+    update_cache: true
+    state: present
+  become: true
+
+- name: "Go-Lang | Install the golang language tools (go-tools)"
+  community.general.pacman:
+    name: go-tools
+    update_cache: true
+    state: present
+  become: true
+
+- name: "Go-Lang | Install the golang debugger (delve)"
+  community.general.pacman:
+    name: delve
+    update_cache: true
+    state: present
+  become: true

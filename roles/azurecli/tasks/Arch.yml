@@ -1,0 +1,6 @@
+---
+- name: "Azure | Install"
+  community.general.pacman:
+    name: azure-cli
+    update_cache: true
+    state: present

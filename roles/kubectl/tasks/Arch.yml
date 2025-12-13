@@ -1,0 +1,7 @@
+---
+- name: "Kubectl | Install dependencies"
+  community.general.pacman:
+    name: kubectl
+    update_cache: true
+    state: present
+  become: true

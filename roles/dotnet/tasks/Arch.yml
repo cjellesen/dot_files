@@ -1,0 +1,26 @@
+---
+- name: "Dotnet | Installing the generic driver for the .NET Core CLI"
+  community.general.pacman:
+    name: dotnet-host
+    update_cache: true
+    state: present
+
+- name: "Dotnet | Installing .NET 9 Runtime"
+  community.general.pacman:
+    name: dotnet-runtime-9.0
+    state: present
+
+- name: "Dotnet | Installing .NET 9 SDK"
+  community.general.pacman:
+    name: dotnet-sdk-9.0
+    state: present
+
+- name: "Dotnet | Installing the newest .NET runtime"
+  community.general.pacman:
+    name: dotnet-runtime
+    state: present
+
+- name: "Dotnet | Installing the newest .NET 9 SDK"
+  community.general.pacman:
+    name: dotnet-sdk
+    state: present

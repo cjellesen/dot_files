@@ -1,0 +1,7 @@
+---
+- name: "Neovim | {{ ansible_distribution }} | Downloading latest Neovim release"
+  community.general.pacman:
+    name: neovim
+    update_cache: true
+    state: present
+  become: true
