@@ -1,0 +1,61 @@
+---
+- name: "Hyprland | Installing the hyperland desktop environment"
+  community.general.pacman:
+    name: hyprland
+    update_cache: true
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the Nvidia drivers (nvidia-dkms)"
+  community.general.pacman:
+    name: nvidia-dkms
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the Nvidia utilities package (nvidia-utils)"
+  community.general.pacman:
+    name: nvidia-utils
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the Nvidia 32 bit utilities package (lib32-nvidia-utils)"
+  community.general.pacman:
+    name: lib32-nvidia-utils
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the EGL API the Wayland protocol (egl-wayland)"
+  community.general.pacman:
+    name: egl-wayland
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the dunst notification daemon"
+  community.general.pacman:
+    name: dunst
+    state: present
+  become: true
+
+- name: "Hyprland | Installing PipeWire"
+  community.general.pacman:
+    name: pipewire
+    state: present
+  become: true
+
+- name: "Hyprland | Installing WirePlumber"
+  community.general.pacman:
+    name: wireplumber
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the XDG Desktop Portal"
+  community.general.pacman:
+    name: xdg-desktop-portal-hyprland
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the polkit authentication daemon (hyprpolkitagent)"
+  community.general.pacman:
+    name: hyprpolkitagent
+    state: present
+  become: true
