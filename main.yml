@@ -10,7 +10,7 @@
         - always
 
   roles:
-     # - bitwarden
+     - bitwarden
      # - fzf
      # - go
      # - dotnet
