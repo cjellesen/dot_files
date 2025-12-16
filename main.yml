@@ -2,6 +2,8 @@
 - name: DotFiles Config
   hosts: localhost
   connection: local
+  become: yes
+  gather_facts: true
 
   pre_tasks:
     - name: Detect Host User
