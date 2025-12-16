@@ -1,4 +1,11 @@
 ---
+
+- name: Test
+  ansible.builtin.set_fact:
+    distribution: "{{ ansible_facts['distribution'] }}"
+
+- Debug: msg "{{ distribution }}"
+
 - name: "{{ role_name }} | Checking for Distribution config: {{ ansible_facts['distribution'] }}"
   ansible.builtin.stat:
     path: "{{ role_path }}/tasks/{{ ansible_facts[distribution] }}.yml"
