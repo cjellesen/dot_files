@@ -18,6 +18,7 @@
     state: present
   become: true
 
+# NOTE: Remember to enable 'multilib' in /etc/pacman.conf
 - name: "Hyprland | Installing the Nvidia 32 bit utilities package (lib32-nvidia-utils)"
   community.general.pacman:
     name: lib32-nvidia-utils
