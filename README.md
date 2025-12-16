@@ -1,10 +1,6 @@
 # dot_files
 
 This is a compilation of my private dot files for linux setup. This is currently for an arch build running with hyprland as its composite.
-Use the Sol Does Tech guide for how to install the system initially and override the ~/.config/hypr/ with the one in the repository.
-
-For Neovim, use the install procedure outline for the "NVCHAD" project.
-Once installed override the relevant files and folders in ~/.config/nvim/ with the content of the nvim directory in the repository.
 
 Program installations:
 
