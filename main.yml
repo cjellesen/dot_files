@@ -12,12 +12,12 @@
         - always
 
   roles:
+     - fzf
+     - go
+     - dotnet
+     - neovim
+     - docker
+     - kubectl
+     - azurecli
      - bitwarden
-     # - fzf
-     # - go
-     # - dotnet
-     # - neovim
      # - hyprland
-     # - docker
-     # - kubectl
-     # - azurecli
