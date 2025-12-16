@@ -59,3 +59,15 @@
     name: hyprpolkitagent
     state: present
   become: true
+
+- name: "Hyprland | Installing the Wofi launcher"
+  community.general.pacman:
+    name: wofi
+    state: present
+  become: true
+
+- name: "Hyprland | Installing the Wayland bar Waybar"
+  community.general.pacman:
+    name: waybar
+    state: present
+  become: true

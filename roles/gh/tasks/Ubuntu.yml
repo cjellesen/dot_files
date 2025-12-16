@@ -1,6 +1,0 @@
----
-- name: Install GitHub CLI tool
-  ansible.builtin.apt:
-    name: gh
-    state: present
-  become: true
