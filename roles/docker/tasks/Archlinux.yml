@@ -26,6 +26,13 @@
     mode: "0710"
   become: true
 
+- name: "Docker | Ensure etc/docker directory exists"
+  ansible.builtin.file:
+    path: "/etc/docker"
+    state: directory
+    mode: "0710"
+  become: true
+
 - name: "Docker | Copy daemon.json"
   ansible.builtin.template:
     dest: "/etc/docker/daemon.json"
