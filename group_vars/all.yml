@@ -1,8 +1,10 @@
 default_roles:
-   - docker
+   - bitwarden
    - fzf
-   - gh
    - go
-   - azurecli
+   - dotnet
    - neovim
+   - hyprland
+   - docker
    - kubectl
+   - azurecli
