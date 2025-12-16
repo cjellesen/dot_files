@@ -11,11 +11,11 @@
 
   roles:
      - bitwarden
-     - fzf
-     - go
-     - dotnet
-     - neovim
-     - hyprland
-     - docker
-     - kubectl
-     - azurecli
+     # - fzf
+     # - go
+     # - dotnet
+     # - neovim
+     # - hyprland
+     # - docker
+     # - kubectl
+     # - azurecli
