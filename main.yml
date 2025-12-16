@@ -20,4 +20,5 @@
      - kubectl
      - azurecli
      - bitwarden
+     - kitty
      - hyprland
