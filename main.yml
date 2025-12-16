@@ -20,4 +20,4 @@
      - kubectl
      - azurecli
      - bitwarden
-     # - hyprland
+     - hyprland
