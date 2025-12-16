@@ -1,5 +1,5 @@
 ---
-- name: "Neovim | {{ ansible_distribution }} | Downloading latest Neovim release"
+- name: "Neovim | {{ ansible_facts['distribution'] }} | Downloading latest Neovim release"
   community.general.pacman:
     name: neovim
     update_cache: true
