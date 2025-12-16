@@ -12,9 +12,6 @@ Program installations:
         - Install pyenv-virutalenv by following the install guides on their github repo along with the config of ~/.bashrc.
         - Once finished reboot the system, just to be sure and "pyenv" along with "pyenv virutalenv" can now be used to download and configure virtual environments.
 
-    - For arch I do not use a direct install of the Azure CLI, instead use the documentation for how to run it in a container.
-    - For MSSQL dependency for ODBC connection and etc. the AUR has a "mssql-tools" repository that installs any dependencies required for this.
-
     - For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a
 
     - For remote Python debugging, eg. through Docker, do the following:
