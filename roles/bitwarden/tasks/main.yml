@@ -2,9 +2,11 @@
 
 - name: Test
   ansible.builtin.set_fact:
-    distribution: "{{ ansible_facts['distribution'] }}"
+    test_dist: "{{ ansible_facts['distribution'] }}"
 
-- Debug: msg "{{ distribution }}"
+- name: Debug
+  debug:
+    msg: "{{ ansible_facts['test_dist'] }}"
 
 - name: "{{ role_name }} | Checking for Distribution config: {{ ansible_facts['distribution'] }}"
   ansible.builtin.stat:
