@@ -84,3 +84,9 @@
     name: ttf-jetbrains-mono-nerd
     state: present
   become: true
+
+- name: "Hyprland | Installing Nerd Font Symbols"
+  community.general.pacman:
+    name: ttf-nerd-fonts-symbols
+    state: present
+  become: true
