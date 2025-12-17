@@ -1,7 +1,0 @@
----
-- name: "Hyprpolkitagent | {{ ansible_facts['distribution'] }} | Installing Hyprpolkitagent"
-  community.general.pacman:
-    name: hyprpolkitagent
-    update_cache: true
-    state: present
-  become: true
