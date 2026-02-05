@@ -20,3 +20,12 @@ cp -r ./config/btop $HOME/.config
 
 rm -rf $HOME/.config/htop
 cp -r ./config/htop $HOME/.config/
+
+rm $HOME/.bash_profile
+cp ./config/bash_profile
+
+rm $HOME/.bashrc
+cp ./config/bashrc
+
+source $HOME/.bashrc
+source $HOME/.bash_profile
