@@ -3,6 +3,9 @@
 rm -rf $HOME/.config/hypr
 cp -r ./config/hypr $HOME/.config
 
+rm -rf $HOME/.config/uwsm
+cp -r ./config/uwsm $HOME/.config
+
 rm -rf $HOME/.config/nvim
 cp -r ./config/nvim $HOME/.config
 
