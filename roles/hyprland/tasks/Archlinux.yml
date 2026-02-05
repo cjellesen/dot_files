@@ -57,6 +57,18 @@
     state: present
   become: true
 
+- name: "Hyprland | Installing PipeWire Pulse"
+  community.general.pacman:
+    name: pipewire-pulse
+    state: present
+  become: true
+
+- name: "Hyprland | Installing PipeWire ALSA"
+  community.general.pacman:
+    name: pipewire-alsa
+    state: present
+  become: true
+
 - name: "Hyprland | Installing WirePlumber"
   community.general.pacman:
     name: wireplumber
