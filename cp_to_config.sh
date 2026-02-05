@@ -27,5 +27,5 @@ cp ./config/bash_profile $HOME/.bash_profile
 rm $HOME/.bashrc
 cp ./config/bashrc $HOME/.bashrc
 
-source $HOME/.bashrv
+source $HOME/.bashrc
 source $HOME/.bash_profile
