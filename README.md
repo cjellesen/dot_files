@@ -3,6 +3,7 @@
 This is a compilation of my private dot files for linux setup. This is currently for an arch build running with hyprland as its composite.
 
 Program installations:
+    - Run the ansible playbook through the "ansible-playbook main.yaml -K" command
 
     - In order for the Mason plugin (plugin manager for Neovim) to function the system need to have npm installed.
         - To install npm first install its dependency, nodejs, and then proceed to install npm.
