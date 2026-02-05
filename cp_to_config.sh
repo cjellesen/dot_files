@@ -22,10 +22,10 @@ rm -rf $HOME/.config/htop
 cp -r ./config/htop $HOME/.config/
 
 rm $HOME/.bash_profile
-cp ./config/bash_profile
+cp ./config/bash_profile $HOME/.bash_profile
 
 rm $HOME/.bashrc
-cp ./config/bashrc
+cp ./config/bashrc $HOME/.bashrc
 
-source $HOME/.bashrc
+source $HOME/.bashrv
 source $HOME/.bash_profile
