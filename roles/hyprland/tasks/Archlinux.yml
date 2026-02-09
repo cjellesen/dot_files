@@ -101,11 +101,3 @@
     state: present
   become: true
 
-  # https://github.com/erans/hyprmon/
-- name: "Hyprland | Installing HyprMon (Monitor config tool)"
-  community.general.pacman:
-    name: hyprmon
-    state: present
-  become: true
-
-
