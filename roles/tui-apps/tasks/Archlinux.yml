@@ -1,0 +1,56 @@
+---
+  # https://github.com/SimplyCEO/wofi
+- name: "TUI Apps | Installing the Wofi launcher"
+  community.general.pacman:
+    name: wofi
+    state: present
+  become: true
+
+  # https://github.com/Alexays/Waybar
+- name: "TUI Apps | Installing the Wayland bar Waybar"
+  community.general.pacman:
+    name: waybar
+    state: present
+  become: true
+
+  # https://github.com/tsowell/wiremix
+- name: "TUI Apps | Installing WireMix (Audio TUI)"
+  community.general.pacman:
+    name: wiremix
+    state: present
+  become: true
+
+  # https://github.com/pythops/bluetui
+- name: "TUI Apps | Installing Bluetui (Bluetooth TUI)"
+  community.general.pacman:
+    name: bluetui
+    state: present
+  become: true
+
+  # https://github.com/pythops/bluetui
+- name: "TUI Apps | Installing Bluetui (Bluetooth TUI)"
+  community.general.pacman:
+    name: bluetui
+    state: present
+  become: true
+
+  # https://github.com/pythops/impala
+- name: "TUI Apps | Installing Impala (wifi TUI)"
+  community.general.pacman:
+    name: impala
+    state: present
+  become: true
+
+  # https://github.com/aristocratos/btop
+- name: "TUI Apps | Installing btop (Resource viewer)"
+  community.general.pacman:
+    name: btop
+    state: present
+  become: true
+
+  # https://github.com/htop-dev/htop
+- name: "TUI Apps | Installing htop (Process viewer)"
+  community.general.pacman:
+    name: htop
+    state: present
+  become: true

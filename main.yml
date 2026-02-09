@@ -12,14 +12,14 @@
         - always
 
   roles:
-     - fzf
-     - go
-     - dotnet
+     - fonts
+     - hyprland
+     - cli-tools
+     - tui-apps
+     - kitty
      - neovim
      - docker
-     - kubectl
-     - azurecli
+     - go
+     - dotnet
      - bitwarden
-     - kitty
-     - hyprland
      - firefox

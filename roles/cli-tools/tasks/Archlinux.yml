@@ -1,0 +1,39 @@
+---
+  # https://github.com/Azure/azure-cli
+- name: "Azure | Install"
+  community.general.pacman:
+    name: azure-cli
+    update_cache: true
+    state: present
+
+  # https://github.com/kubernetes/kubectl
+- name: "Kubectl | Installing kubectl"
+  community.general.pacman:
+    name: kubectl
+    update_cache: true
+    state: present
+  become: true
+
+  # https://github.com/junegunn/fzf
+- name: "fzf | installing fzf"
+  community.general.pacman:
+    name: fzf
+    update_cache: true
+    state: present
+  become: true
+
+  # https://github.com/BurntSushi/ripgrep
+- name: "ripgrep | installing ripgrep"
+  community.general.pacman:
+    name: ripgrep
+    update_cache: true
+    state: present
+  become: true
+
+  # https://github.com/sharkdp/fd
+- name: "fd | installing fd"
+  community.general.pacman:
+    name: fd
+    update_cache: true
+    state: present
+  become: true

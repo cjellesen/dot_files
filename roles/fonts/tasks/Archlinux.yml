@@ -1,0 +1,18 @@
+---
+- name: "Hyprland | Installing noto-fonts"
+  community.general.pacman:
+    name: noto-fonts
+    state: present
+  become: true
+
+- name: "Hyprland | Installing Nerd Fonts"
+  community.general.pacman:
+    name: ttf-jetbrains-mono-nerd
+    state: present
+  become: true
+
+- name: "Hyprland | Installing Nerd Font Symbols"
+  community.general.pacman:
+    name: ttf-nerd-fonts-symbols
+    state: present
+  become: true

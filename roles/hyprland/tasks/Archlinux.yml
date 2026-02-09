@@ -87,51 +87,17 @@
     state: present
   become: true
 
-- name: "Hyprland | Installing noto-fonts"
-  community.general.pacman:
-    name: noto-fonts
-    state: present
-  become: true
-
-- name: "Hyprland | Installing Nerd Fonts"
-  community.general.pacman:
-    name: ttf-jetbrains-mono-nerd
-    state: present
-  become: true
-
-- name: "Hyprland | Installing Nerd Font Symbols"
-  community.general.pacman:
-    name: ttf-nerd-fonts-symbols
-    state: present
-  become: true
-
-- name: "Hyprland | Installing the Wofi launcher"
-  community.general.pacman:
-    name: wofi
-    state: present
-  become: true
-
-- name: "Hyprland | Installing the Wayland bar Waybar"
-  community.general.pacman:
-    name: waybar
-    state: present
-  become: true
-
+  # https://github.com/hyprwm/hyprpaper
 - name: "Hyprland | Installing the Wallpaper manager Hyprpaper"
   community.general.pacman:
     name: hyprpaper
     state: present
   become: true
 
+  # https://github.com/hyprwm/hyprlock
 - name: "Hyprland | Installing the Screen locker Hyprlock"
   community.general.pacman:
     name: hyprlock
-    state: present
-  become: true
-
-- name: "Hyprland | Installing the Pipewire GUI Hyprpwcenter"
-  community.general.pacman:
-    name: hyprpwcenter
     state: present
   become: true
 
