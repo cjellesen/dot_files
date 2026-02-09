@@ -104,7 +104,7 @@
   # https://github.com/erans/hyprmon/
 - name: "Hyprland | Installing HyprMon (Monitor config tool)"
   community.general.pacman:
-    name: hyprlock
+    name: hyprmon
     state: present
   become: true
 
