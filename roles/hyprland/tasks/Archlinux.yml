@@ -1,77 +1,47 @@
 ---
-- name: "Hyprland | Installing the hyperland desktop environment"
+- name: "Hyprland | Installing hyprland (Desktop environment)"
   community.general.pacman:
     name: hyprland
     update_cache: true
     state: present
   become: true
 
-- name: "Hyprland | Installing uwsm"
+- name: "Hyprland | Installing uwsm (Wayland session manager)"
   community.general.pacman:
     name: uwsm
     update_cache: true
     state: present
   become: true
 
-- name: "Hyprland | Installing libnewt"
+- name: "Hyprland | Installing libnewt (Uwsm dependency)"
   community.general.pacman:
     name: libnewt
     update_cache: true
     state: present
   become: true
 
-- name: "Hyprland | Installing the Nvidia drivers (nvidia-dkms)"
+- name: "Hyprland | Installing nvidia-dkms (Nvidia drivers)"
   community.general.pacman:
     name: nvidia-dkms
     state: present
   become: true
 
-- name: "Hyprland | Installing the Nvidia utilities package (nvidia-utils)"
+- name: "Hyprland | Installing nvidia-utils (Nvidia utilities package)"
   community.general.pacman:
     name: nvidia-utils
     state: present
   become: true
 
 # NOTE: Remember to enable 'multilib' in /etc/pacman.conf
-- name: "Hyprland | Installing the Nvidia 32 bit utilities package (lib32-nvidia-utils)"
+- name: "Hyprland | Installing lib32-nvidia-utils (Nvidia 32 bit utilities package)"
   community.general.pacman:
     name: lib32-nvidia-utils
     state: present
   become: true
 
-- name: "Hyprland | Installing the EGL API the Wayland protocol (egl-wayland)"
+- name: "Hyprland | Installing the egl-wayland (EGL API for Wayland protocol)"
   community.general.pacman:
     name: egl-wayland
-    state: present
-  become: true
-
-- name: "Hyprland | Installing the dunst notification daemon"
-  community.general.pacman:
-    name: dunst
-    state: present
-  become: true
-
-- name: "Hyprland | Installing PipeWire"
-  community.general.pacman:
-    name: pipewire
-    state: present
-  become: true
-
-- name: "Hyprland | Installing PipeWire Pulse"
-  community.general.pacman:
-    name: pipewire-pulse
-    state: present
-  become: true
-
-- name: "Hyprland | Installing PipeWire ALSA"
-  community.general.pacman:
-    name: pipewire-alsa
-    state: present
-  become: true
-
-- name: "Hyprland | Installing WirePlumber"
-  community.general.pacman:
-    name: wireplumber
     state: present
   become: true
 
@@ -81,23 +51,61 @@
     state: present
   become: true
 
-- name: "Hyprland | Installing the polkit authentication daemon (hyprpolkitagent)"
+- name: "Hyprland | Installing dunst (Notification daemon)"
+  community.general.pacman:
+    name: dunst
+    state: present
+  become: true
+
+- name: "Hyprland | Installing PipeWire (Audio)"
+  community.general.pacman:
+    name: pipewire
+    state: present
+  become: true
+
+- name: "Hyprland | Installing PipeWire Pulse (Audio)"
+  community.general.pacman:
+    name: pipewire-pulse
+    state: present
+  become: true
+
+- name: "Hyprland | Installing PipeWire ALSA (Audio)"
+  community.general.pacman:
+    name: pipewire-alsa
+    state: present
+  become: true
+
+- name: "Hyprland | Installing WirePlumber (Audio)"
+  community.general.pacman:
+    name: wireplumber
+    state: present
+  become: true
+
+- name: "Hyprland | Installing hyprpolkitagent (Polkit authentication daemon)"
   community.general.pacman:
     name: hyprpolkitagent
     state: present
   become: true
 
   # https://github.com/hyprwm/hyprpaper
-- name: "Hyprland | Installing the Wallpaper manager Hyprpaper"
+- name: "Hyprland | Installing Hyprpaper (Wallpaper manager)"
   community.general.pacman:
     name: hyprpaper
     state: present
   become: true
 
   # https://github.com/hyprwm/hyprlock
-- name: "Hyprland | Installing the Screen locker Hyprlock"
+- name: "Hyprland | Installing Hyprlock (Screen locker)"
   community.general.pacman:
     name: hyprlock
     state: present
   become: true
+
+  # https://github.com/erans/hyprmon/
+- name: "Hyprland | Installing HyprMon (Monitor config tool)"
+  community.general.pacman:
+    name: hyprlock
+    state: present
+  become: true
+
 

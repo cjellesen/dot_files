@@ -27,13 +27,6 @@
     state: present
   become: true
 
-  # https://github.com/pythops/bluetui
-- name: "TUI Apps | Installing Bluetui (Bluetooth TUI)"
-  community.general.pacman:
-    name: bluetui
-    state: present
-  become: true
-
   # https://github.com/pythops/impala
 - name: "TUI Apps | Installing Impala (wifi TUI)"
   community.general.pacman:
