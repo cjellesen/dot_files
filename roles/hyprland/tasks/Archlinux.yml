@@ -1,4 +1,11 @@
 ---
+- name: "Hyprland | Install base-devel (Build tools)"
+  community.general.pacman:
+    name: base-devel
+    update_cache: true
+    state: present
+  become: true
+
 - name: "Hyprland | Installing hyprland (Desktop environment)"
   community.general.pacman:
     name: hyprland
@@ -17,6 +24,12 @@
   community.general.pacman:
     name: libnewt
     update_cache: true
+    state: present
+  become: true
+
+- name: "Hyprland | Installing nvidia-dks Linux headers (Nvidia drivers)"
+  community.general.pacman:
+    name: linux-headers
     state: present
   become: true
 
