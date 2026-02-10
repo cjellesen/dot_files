@@ -24,7 +24,6 @@ Program installations:
 
     - DotNet
         - For installing the Roslyn Language Server (https://github.com/dotnet/dotnet/blob/main/src/roslyn/README.md) either:
-            - Download the source code for the latest release and compile your self
             - Navigate to the URL "https://dev.azure.com/dnceng/public/_artifacts"
             - Find a feed with a new build of the LanguageServer, this can be done by searching "dotnet" in the feed selector, e.g. "https://dev.azure.com/dnceng/public/_artifacts/feed/dotnet10"
             - Search for Microsoft.CodeAnalysis.LanguageServer and select the build for the appropriate architecture, e.g. "linux-x64"
