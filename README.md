@@ -3,12 +3,12 @@
 This is a compilation of my private dot files for linux setup. This is currently for an arch build running with hyprland as its composite.
 
 Program installations:
-    
+
     - Run the ansible playbook through the "ansible-playbook main.yaml -K" command
-    
+
     -Use the "cp_to_config.sh" to copy the relevant configuration to the "$HOME/.config/" folder
-        - Rememeber to alter the monitor name and resolution to match the monitor setup of the computer 
-    
+        - Rememeber to alter the monitor name and resolution to match the monitor setup of the computer
+
     - In order for the Mason plugin (plugin manager for Neovim) to function the system need to have npm installed.
         - To install npm first install its dependency, nodejs, and then proceed to install npm.
 
@@ -31,11 +31,13 @@ Program installations:
             - Find the folder where the executable of interest lies, e.g. "./content/LanguageServer/linux-x64"
             - Make the "Microsoft.CodeAnalysis.LanguageServer" executable by running chmod
             - Test it can execute and profit!
-    
+
     - 3D software such as FreeCAD or Bambulab Studio will fail to render the 3D compositor unless launched with:
         - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
 
-    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install). 
-      It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..." 
-      is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to" 
+    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install).
+      It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..."
+      is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to"
       will result in Hyprland starting and not getting stuck.
+
+    - Remeber to also disable systemd-networkd-wait-online.service to avoid process stalling
