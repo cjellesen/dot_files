@@ -32,3 +32,6 @@ Program installations:
             - Find the folder where the executable of interest lies, e.g. "./content/LanguageServer/linux-x64"
             - Make the "Microsoft.CodeAnalysis.LanguageServer" executable by running chmod
             - Test it can execute and profit!
+    
+    - 3D software such as FreeCAD or Bambulab Studio will fail to render the 3D compositor unless launched with:
+        - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
