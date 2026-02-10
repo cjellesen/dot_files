@@ -2,25 +2,32 @@
 
 This is a compilation of my private dot files for linux setup. This is currently for an arch build running with hyprland as its composite.
 
-Program installations:
+Before proceeding do the following:
+
+    - Ensure that multilib is enable in /etc/pacman.conf (need that for the lib32-nvidia-utils package, needed for Steam)
+
+    - Ensure that the setting i "/etc/gai.conf" that allows IPv4 prioritization. This might also be needed during the Arch install especially if 8.8.8.8
+        can be pinged but google.com can't.
+
+Install Ansible and run the Ansible Playbook:
+
+    - Install ansible by running "pacman -S ansible"
 
     - Run the ansible playbook through the "ansible-playbook main.yaml -K" command
 
-    -Use the "cp_to_config.sh" to copy the relevant configuration to the "$HOME/.config/" folder
-        - Rememeber to alter the monitor name and resolution to match the monitor setup of the computer
+    - After the playbok has run its course remeber to disable systemd-networkd-wait-online.service to avoid process stalling
 
-    - In order for the Mason plugin (plugin manager for Neovim) to function the system need to have npm installed.
-        - To install npm first install its dependency, nodejs, and then proceed to install npm.
+Once all packages has been installed use the "cp_to_config.sh" to copy the relevant configuration to the "$HOME/.config/" folder. Also remember to alter the monitor name and resolution in the hyprland.conf (run "hyprctl monitors" for this) along with the monitor name in the hyprpaper.conf.
 
-    - Python version manager:
-        - use pacman to install pyenv and follow the guides from their github for how to config ~/.bashrc etc.
-        - Install pyenv-virutalenv by following the install guides on their github repo along with the config of ~/.bashrc.
-        - Once finished reboot the system, just to be sure and "pyenv" along with "pyenv virutalenv" can now be used to download and configure virtual environments.
+Below is an assortment of notes that might/might not be relevant:
 
-    - For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a
+    - 3D software such as FreeCAD or Bambulab Studio will fail to render the 3D compositor unless launched with:
+        - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
 
-    - For remote Python debugging, eg. through Docker, do the following:
-        - Install debugpy on both the local and the remote machine
+    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install).
+      It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..."
+      is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to"
+      will result in Hyprland starting and not getting stuck.
 
     - DotNet
         - For installing the Roslyn Language Server (https://github.com/dotnet/dotnet/blob/main/src/roslyn/README.md) either:
@@ -32,12 +39,13 @@ Program installations:
             - Make the "Microsoft.CodeAnalysis.LanguageServer" executable by running chmod
             - Test it can execute and profit!
 
-    - 3D software such as FreeCAD or Bambulab Studio will fail to render the 3D compositor unless launched with:
-        - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
+    - Python version manager:
+        - use pacman to install pyenv and follow the guides from their github for how to config ~/.bashrc etc.
+        - Install pyenv-virutalenv by following the install guides on their github repo along with the config of ~/.bashrc.
+        - Once finished reboot the system, just to be sure and "pyenv" along with "pyenv virutalenv" can now be used to download and configure virtual environments.
 
-    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install).
-      It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..."
-      is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to"
-      will result in Hyprland starting and not getting stuck.
+    - For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a
 
-    - Remeber to also disable systemd-networkd-wait-online.service to avoid process stalling
+    - For remote Python debugging, eg. through Docker, do the following:
+        - Install debugpy on both the local and the remote machine
+
