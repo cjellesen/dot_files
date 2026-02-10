@@ -35,4 +35,7 @@ Program installations:
     - 3D software such as FreeCAD or Bambulab Studio will fail to render the 3D compositor unless launched with:
         - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
 
-    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install). It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..." is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to" will result in Hyprland starting and not getting stuck.
+    - Be aware that on newer WIFI devices the system will default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install). 
+      It can however, also throw off initialization of Hyprland and while one would not assume a line like this: "graphical.target is queued for start, waiting for 60s..." 
+      is related to network, going into the /etc/gai.conf and uncommenting the line below the text "For sites which prefer IPv4 connections change the last line to" 
+      will result in Hyprland starting and not getting stuck.
