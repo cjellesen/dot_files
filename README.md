@@ -54,9 +54,9 @@ Once a feed with the package "Microsoft.CodeAnalysis.LanguageServer" has been lo
 
 NuGet files are essentially just .zip files so change the extension by renaming it from the ".nupkg" extension to ".zip" and unpack it.
 
-Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/<architecture>/" folder and make it executable using chmod. Once this is done test it can execute.
+Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/\<architecture\>/" folder and make it executable using chmod. Once this is done test it can execute.
 
-For the fancy folks, create a folder to store content of the of "./content/LanguageServer/<architecture>/" in and in the "/usr/local/bin/" folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf <PATH TO EXECUTABLE> /usr/local/bin/language-server". The language server can now be executed using "language-server".
+For the fancy folks, create a folder to store content of the of "./content/LanguageServer/\<architecture\>/" in and in the "/usr/local/bin/" folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf \<PATH TO EXECUTABLE\> /usr/local/bin/language-server". The language server can now be executed using "language-server".
 
 As a note, the Neovim setup currently expects the language server to be called using the command "language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects. Once this is done the workflow in Neovim for getting linting outside the current file is:
 
