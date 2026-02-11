@@ -47,7 +47,17 @@ Downloading the LanguageServer to provide linting for C# development can be abit
 
 Once a feed with the package Microsoft.CodeAnalysis.LanguageServer has been download the NuGet file for the appropriate architecture, e.g. "linux-x64". NuGet files are essentially just .zip files so change the extension by renaming it from the ".nupkg" extension to ".zip" and unpack it. Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/<architecture>/" folder and make it executable using chmod. Once this is done test it can execute. If you want to be fancy create a folder to store content of the of "./content/LanguageServer/<architecture>/" folder and in the /usr/local/bin/ folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf <PATH TO EXECUTABLE> /usr/local/bin/language-server". The language server can now be executed using "language-server".
 
-As a note, the Neovim setup currently expects the language server to be called using the command "language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects.
+As a note, the Neovim setup currently expects the language server to be called using the command "language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects. Once this is done the workflow in Neovim for getting linting outside the current file is:
+
+    - On intialization of Neovim set the compiler to dotnet using ":compile dotnet"
+    - The build chain can now be intialized by running ":make" which builds and displays the result but also adds it to the quick fix list
+    - The resulting list from the build can be seen in the quick fix window with the ":copen" command
+
+For documentaion about the ":make" in relation to dotnet see: "https://neovim.io/doc/user/quickfix.html#compiler-dotnet". One can add the options described in the documentation to Neovim as global defaults as done in the "./config/nvim/lua/config/globals.lua" where the following is set:
+
+    - vim.g.dotnet_errors_only = true
+    - vim.g.dotnet_show_project_file = false
+
 
 ## Connecting to a private NuGet feed
 This used to be alot more difficult but is rather simple now thanks to the installation being self contained. Firstly, add the desired NuGet feed to the "$HOME/.nuget/NuGet/NuGet.Config" (if you want it globally). Then follow the guide at the Microsoft Artifact CredProvider ("https://github.com/microsoft/artifacts-credprovider") which essentially are:
