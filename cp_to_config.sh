@@ -26,6 +26,3 @@ cp -r ./config/htop $HOME/.config/
 
 rm $HOME/.bash_profile
 cp ./config/bash_profile $HOME/.bash_profile
-
-rm $HOME/.bashrc
-cp ./config/bashrc $HOME/.bashrc
