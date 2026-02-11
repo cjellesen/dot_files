@@ -36,7 +36,6 @@ Below is an assortment of notes that might/might not be relevant:
 I have yet to modernize my Neovim setup. I am planning to move from the Jetbrains Rider to Neovim but the ergonomics are not quite there yet for a full migrations. This portion of the README will come at a later time.
 For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a.
 
-
 # DotNet
 Below is a small section of useful info for writing code in C# on Linux.
 
@@ -46,7 +45,9 @@ Downloading the LanguageServer to provide linting for C# development can be abit
     - https://dev.azure.com/azure-public/vside
     - https://dev.azure.com/dnceng/public/
 
-Once a feed with the package Microsoft.CodeAnalysis.LanguageServer has been download the NuGet file for the appropriate architecture, e.g. "linux-x64". NuGet files are essentially just .zip files so change the extension by renaming it from the ".nupkg" extension to ".zip" and unpack it. Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/<architecture>/" folder and make it executable using chmod. Once this is done test it can execute. If you want to be fancy create a folder to store content of the of "./content/LanguageServer/<architecture>/" folder and in the /usr/local/bin/ folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf <PATH TO EXECUTABLE> /usr/local/bin/language-server". The language server can now be executed using "language-server". This is what Neovim expects if you want to use it do provide linting for C# projects.
+Once a feed with the package Microsoft.CodeAnalysis.LanguageServer has been download the NuGet file for the appropriate architecture, e.g. "linux-x64". NuGet files are essentially just .zip files so change the extension by renaming it from the ".nupkg" extension to ".zip" and unpack it. Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/<architecture>/" folder and make it executable using chmod. Once this is done test it can execute. If you want to be fancy create a folder to store content of the of "./content/LanguageServer/<architecture>/" folder and in the /usr/local/bin/ folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf <PATH TO EXECUTABLE> /usr/local/bin/language-server". The language server can now be executed using "language-server".
+
+As a note, the Neovim setup currently expects the language server to be called using the command "language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects.
 
 ## Connecting to a private NuGet feed
 This used to be alot more difficult but is rather simple now thanks to the installation being self contained. Firstly, add the desired NuGet feed to the "$HOME/.nuget/NuGet/NuGet.Config" (if you want it globally). Then follow the guide at the Microsoft Artifact CredProvider ("https://github.com/microsoft/artifacts-credprovider") which essentially are:
