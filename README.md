@@ -6,7 +6,7 @@ Before proceeding do the following:
 
     - Ensure that multilib is enable in /etc/pacman.conf (for lib32-nvidia-utils)
 
-    - Ensure that the setting i "/etc/gai.conf" that allows IPv4 prioritization is on.
+    - Ensure that the setting in "/etc/gai.conf" that allows IPv4 prioritization is on.
 
 The last step might also be relevant during an Arch install as a solution to problems pinging a site via its FQDN even though it can be pinged using its IP.
 
