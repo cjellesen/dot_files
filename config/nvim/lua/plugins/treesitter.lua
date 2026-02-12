@@ -94,7 +94,7 @@ local treesitter_config = function()
 	-- it after the lazy setup in the init.lua file.
 	-- The original documentation from the Kickstart guide said: "Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'"
 	vim.defer_fn(function()
-		require("nvim-treesitter.configs").setup(options)
+		require("nvim-treesitter.config").setup(options)
 	end, 0)
 end
 
