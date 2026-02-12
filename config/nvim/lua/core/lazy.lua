@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    require("plugins.color_scheme.catppucin"),
+    require("plugins.color_scheme.catppuccin"),
     require("plugins.color_scheme.vscode"),
     require("plugins.telescope"),
     require("plugins.treesitter"),
