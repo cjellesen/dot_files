@@ -86,7 +86,15 @@ For documentaion about the ":make" in relation to dotnet see: "https://neovim.io
     - vim.g.dotnet_show_project_file = false
 
 ## Connecting to a private NuGet feed
-This used to be alot more difficult but is rather simple now thanks to the installation being self contained. Firstly, add the desired NuGet feed to the "$HOME/.nuget/NuGet/NuGet.Config" (if you want it globally). Then follow the guide at the Microsoft Artifact CredProvider ("https://github.com/microsoft/artifacts-credprovider") which essentially are:
+In order to connect to private NuGet feeds from Azure Artifacts, the Azure Artifacts Credential Provider must be installed. The install guide can be found at:
+
+    - https://github.com/microsoft/artifacts-credprovider
+
+It can either be installed via the dotnet tool command:
+
+    - dotnet tool install --global  Microsoft.Artifacts.CredentialProvider.NuGet.Tool
+
+Or it can be installed manually by:
 
     - Download the latest release from "https://github.com/Microsoft/artifacts-credprovider/releases" for the desired architecture
 
@@ -97,7 +105,6 @@ This used to be alot more difficult but is rather simple now thanks to the insta
     - Copy the folder "netcore" from the unpacked ".tar.gz" file into the newly created "$HOME/.nuget/plugins/" directory
 
 You should now be able to run "dotnet restore --interactive" and it will open a new tab for authentication in the browser.
-
 Alternatively install the credential tool through the "dotnet tool" command. Remember to ensure the "$HOME/.dotnet/tools" folder is added to "$PATH" for this to work.
 
 # Python
