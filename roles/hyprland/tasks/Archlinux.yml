@@ -115,3 +115,24 @@
     state: present
   become: true
 
+  # https://github.com/emersion/slurp
+- name: "Hyprland | Installing slurp (Region selector for Wayland)"
+  community.general.pacman:
+    name: slurp
+    state: present
+  become: true
+
+  # https://gitlab.freedesktop.org/emersion/grim
+- name: "Hyprland | Installing grim (Screen grabber for Wayland)"
+  community.general.pacman:
+    name: grim
+    state: present
+  become: true
+
+  # https://github.com/jtheoof/swappy
+- name: "Hyprland | Installing swappy (Snapshot and editor tool)"
+  community.general.pacman:
+    name: swappy
+    state: present
+  become: true
+
