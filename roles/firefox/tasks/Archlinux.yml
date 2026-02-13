@@ -1,5 +1,5 @@
 ---
-- name: "Firefox | Installing Firexfox"
+- name: "Firefox | Installing Firefox"
   community.general.pacman:
     name: firefox
     update_cache: true

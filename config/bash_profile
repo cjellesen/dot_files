@@ -4,6 +4,8 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+export PATH="$PATH:/home/casj/.dotnet/tools"
+
 if uwsm check may-start && uwsm select; then
     exec uwsm start default
 fi
