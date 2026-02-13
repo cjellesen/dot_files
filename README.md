@@ -20,6 +20,8 @@ After the playbok has run its course ensure that the "systemd-networkd-wait-onli
 
 Once all packages has been installed use the "cp_to_config.sh" to copy the relevant configuration to the "$HOME/.config/" folder and run "hyprctl reload". Also remember to alter the monitor name and resolution in the hyprland.conf (run "hyprctl monitors" for this) along with the monitor name in the hyprpaper.conf.
 
+There have been cases on a new install where the first load of hyprland, after the "cp_to_config.sh" as been executed, where Hyprland ignores the "$HOME/.config/hypr/" folder. In this case it will create its default files in the "$HOME/.config/" directory and use those. In this case just delete the default files that was created and reload Hyprland after ensuring there are files in the "$HOME/.config/hypr/" directory, which there should be, and it should work.
+
 ## After installation notes
 Below is an assortment of notes that might/might not be relevant:
 
