@@ -5,6 +5,16 @@
     update_cache: true
     state: present
 
+- name: "Dotnet | Installing .NET 8 Runtime"
+  community.general.pacman:
+    name: dotnet-runtime-8.0
+    state: present
+
+- name: "Dotnet | Installing .NET 8 SDK"
+  community.general.pacman:
+    name: dotnet-sdk-8.0
+    state: present
+
 - name: "Dotnet | Installing .NET 9 Runtime"
   community.general.pacman:
     name: dotnet-runtime-9.0
