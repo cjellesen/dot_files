@@ -47,6 +47,18 @@ For extra resources on Neovim check out: https://alpha2phi.medium.com/learn-neov
 Below is a small section of useful info for writing code in C# on Linux.
 
 ## Getting an LSP
+Recently found that the "roslyn-language-server" has been released as a dotnet tool:
+
+    - https://www.nuget.org/packages/roslyn-language-server/
+
+In order to install the tool run the command:
+
+    - dotnet tool install --global roslyn-language-server --prerelease
+
+If the "dotnet tool" has been added to the "$PATH" variable then neovim should be able to call it without having to do more.
+
+The following is a description of how to get the language server before the introduction of it to the dotnet tool ecosystem.
+
 Downloading the LanguageServer to provide linting for C# development can be abit of a pain. What it boils down to is finding the NuGet package Microsoft.CodeAnalysis.LanguageServer and downloading it. The best way to do this has, in my experience, been to browse the public the public AzureFeed for Microsoft. Some of the places I've had success with are:
 
     - https://dev.azure.com/azure-public/vside
@@ -58,9 +70,9 @@ NuGet files are essentially just .zip files so change the extension by renaming 
 
 Once unpacked find the executable "Microsoft.CodeAnalysis.LanguageServer" in the "./content/LanguageServer/\<architecture\>/" folder and make it executable using chmod. Once this is done test it can execute.
 
-For the fancy folks, create a folder to store content of the of "./content/LanguageServer/\<architecture\>/" in and in the "/usr/local/bin/" folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf \<PATH TO EXECUTABLE\> /usr/local/bin/language-server". The language server can now be executed using "language-server".
+For the fancy folks, create a folder to store content of the of "./content/LanguageServer/\<architecture\>/" in and in the "/usr/local/bin/" folder create symlink to the "Microsoft.CodeAnalysis.LanguageServer" executable by running "sudo ln -sf \<PATH TO EXECUTABLE\> /usr/local/bin/roslyn-language-server". The language server can now be executed using "roslyn-language-server".
 
-As a note, the Neovim setup currently expects the language server to be called using the command "language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects. Once this is done the workflow in Neovim for getting linting outside the current file is:
+As a note, the Neovim setup currently expects the language server to be called using the command "roslyn-language-server" so the portion about the symlinking is required to get LSP integration with Neovim for C# projects. Once this is done the workflow in Neovim for getting linting outside the current file is:
 
     - On intialization of Neovim set the compiler to dotnet using ":compile dotnet"
 
