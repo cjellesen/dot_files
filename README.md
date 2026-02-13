@@ -82,7 +82,9 @@ This used to be alot more difficult but is rather simple now thanks to the insta
 
     - Copy the folder "netcore" from the unpacked ".tar.gz" file into the newly created "$HOME/.nuget/plugins/" directory
 
-You should now be able to run dotnet restore and it will open a new tab for authentication in the browser.
+You should now be able to run "dotnet restore --interactive" and it will open a new tab for authentication in the browser.
+
+Alternatively install the credential tool through the "dotnet tool" command. Remember to ensure the "$HOME/.dotnet/tools" folder is added to "$PATH" for this to work.
 
 # Python
 I have not yet set up my Python development environment and might migrate to uv for managing packages and virtual environments.
