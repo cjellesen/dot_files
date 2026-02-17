@@ -1,6 +1,6 @@
 vim.lsp.config.roslyn = {
     cmd = {
-        "language-server",
+        "roslyn-language-server",
         "--logLevel=Information",
         "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.log.get_filename()),
         "--stdio",
