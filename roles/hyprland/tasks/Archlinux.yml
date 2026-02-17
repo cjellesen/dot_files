@@ -6,6 +6,13 @@
     state: present
   become: true
 
+  # https://gitlab.com/kernel-firmware/linux-firmware
+- name: "Hyprland | Installing Linux firmware package (Firmware outside linux kernel)"
+  community.general.pacman:
+    name: linux-firmware
+    state: present
+  become: true
+
 - name: "Hyprland | Install base-devel (Build tools)"
   community.general.pacman:
     name: base-devel

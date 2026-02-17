@@ -1,7 +1,13 @@
 ---
-- name: "Docker | Install"
+- name: "Docker | Installing Docker"
   community.general.pacman:
     name: docker
+    update_cache: true
+    state: present
+
+- name: "Docker | Installing Docker Compose"
+  community.general.pacman:
+    name: docker-compose
     update_cache: true
     state: present
 
