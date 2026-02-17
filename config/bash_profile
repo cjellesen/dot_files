@@ -6,6 +6,9 @@
 
 export PATH="$PATH:/home/casj/.dotnet/tools"
 
+# uv reguirement
+export PATH="/home/casj/.local/share/../bin:$PATH"
+
 if uwsm check may-start && uwsm select; then
     exec uwsm start default
 fi
