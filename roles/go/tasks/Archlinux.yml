@@ -6,8 +6,6 @@
     state: present
   become: true
 
-# For now add the following manually to the .bashrc "export PATH=$PATH:/usr/local/go/bin"
-
 - name: "Go-Lang | Install the golang language server (gopls)"
   community.general.pacman:
     name: gopls

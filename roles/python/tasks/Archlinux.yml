@@ -1,0 +1,15 @@
+---
+- name: "Python | Installing the UV package (Package/virtualenv manager)"
+  community.general.pacman:
+    name: uv
+    update_cache: true
+    state: present
+  become: true
+
+- name: "Python | Installing the Ruff package (Linter and code formatter)"
+  community.general.pacman:
+    name: ruff
+    update_cache: true
+    state: present
+  become: true
+

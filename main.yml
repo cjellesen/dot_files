@@ -21,5 +21,6 @@
      - docker
      - go
      - dotnet
+     - python
      - bitwarden
      - firefox
