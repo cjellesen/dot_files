@@ -45,7 +45,7 @@
     name: aspnet-runtime
     state: present
 
-- name: "Dotnet | Installing the newest .NET 9 SDK"
+- name: "Dotnet | Installing the newest .NET SDK"
   community.general.pacman:
     name: dotnet-sdk
     state: present
