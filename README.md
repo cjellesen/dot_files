@@ -29,6 +29,10 @@ Below is an assortment of notes that might/might not be relevant:
 
     - __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json <NAME OF PROGRAM>
 
+For Bambu Studio, in order to run it with the 3D compositor working and with GPU rendering enabled used the following:
+
+    - __GLX_VENDOR_LIBRARY_NAME=mesa __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json MESA_LOADER_DRIVER_OVERRIDE=zink GALLIUM_DRIVER=zink WEBKIT_DISABLE_DMABUF_RENDERER=1 bambu-studio
+
 Be aware that on newer network devices the system might default to IPv6 first which can fail to resolve some sites (e.g. archlinux.org during the arch install). It can however, also throw off initialization of Hyprlandand result in the following status message after initialization of Hyprland:
 
     - "graphical.target is queued for start, waiting for 60s..."
