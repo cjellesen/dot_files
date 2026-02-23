@@ -48,8 +48,8 @@ vim.lsp.enable({
 })
 
 vim.diagnostic.config({
-    virtual_lines = false,
-    virtual_text = true,
+    virtual_text = false, 
+    virtual_lines = true,
     underline = true,
     update_in_insert = false,
     severity_sort = true,
@@ -63,6 +63,8 @@ vim.diagnostic.config({
         numhl = {
             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
             [vim.diagnostic.severity.WARN] = "WarningMsg",
+            [vim.diagnostic.severity.INFO] = "InfoMsg",
+            [vim.diagnostic.severity.HINT] = "HintMsg",
         }
     },
 })
@@ -80,13 +82,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
         map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+        map("<leader>cs", ts_builtin.lsp_document_symbols, "[C]ode [S]ymbols")
         map("gr", ts_builtin.lsp_references, "[G]o to [R]eferences")
-        map("gI", ts_builtin.lsp_implementations, "[G]o to [I]mplementation")
+        map("gi", ts_builtin.lsp_implementations, "[G]o to [I]mplementation")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("gt", ts_builtin.lsp_type_definitions, "[G]o to [T]ype")
-        map("<leader>cs", ts_builtin.lsp_document_symbols, "[C]ode [S]ymbols")
         map("K", vim.lsp.buf.hover, "Hover Documentation")
+        map("<leader>k", vim.diagnostic.open_float, "Hover Diagnostic")
 
         local function client_supports_method(client, method, bufnr)
             return client:supports_method(method, bufnr)
