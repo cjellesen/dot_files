@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("gt", ts_builtin.lsp_type_definitions, "[G]o to [T]ype")
         map("K", vim.lsp.buf.hover, "Hover Documentation")
-        map("<leader>k", vim.diagnostic.open_float, "Hover Diagnostic")
+        map("<C-k>", vim.diagnostic.open_float, "Hover Diagnostic")
 
         local function client_supports_method(client, method, bufnr)
             return client:supports_method(method, bufnr)
