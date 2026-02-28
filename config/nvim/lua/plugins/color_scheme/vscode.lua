@@ -25,6 +25,9 @@ local theme = {
             -- Override colors (see ./lua/vscode/colors.lua)
             color_overrides = {
                 vscLineNumber = '#FFFFFF',
+
+                -- This is in order for the pop ups to match the background color from the terminal 
+                vscPopupBack = "#1E1E2E",
             },
 
             group_overrides = {
@@ -54,6 +57,7 @@ local theme = {
                 ["@function.method"] = { fg = "#38c596", bold = true },
                 ["@function.method.call"] = { link = "@function.method" },
                 ["@function.method.call.c_sharp"] = { link = "@function.method" },
+                ["@lsp.type.extensionMethod"] = { fg = "#38c596", bold = true },
 
                 -- Types (mots clés)
                 ["@keyword"] = { fg = "#6c95eb", italic = false },
