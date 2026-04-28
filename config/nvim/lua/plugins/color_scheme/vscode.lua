@@ -26,7 +26,7 @@ local theme = {
             color_overrides = {
                 vscLineNumber = '#FFFFFF',
 
-                -- This is in order for the pop ups to match the background color from the terminal 
+                -- This is in order for the pop ups to match the background color from the terminal
                 vscPopupBack = "#1E1E2E",
             },
 
@@ -66,6 +66,9 @@ local theme = {
 
                 -- Classes
                 ["@lsp.type.class.cs"] = { fg = "#c191ff", bold = true },
+
+                -- Struct
+                ["@lsp.type.struct.cs"] = { fg = "#93c5c9", bold = true },
 
                 -- Enum
                 ["@lsp.type.enum.cs"] = { fg = "#4EC9B0", bold = true },

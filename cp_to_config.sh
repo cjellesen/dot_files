@@ -6,6 +6,9 @@
 # rm -rf $HOME/.config/uwsm
 # cp -r ./config/uwsm $HOME/.config
 
+rm -rf $HOME/.local/state/nvim
+rm -rf $HOME/.local/share/nvim
+
 rm -rf $HOME/.config/nvim
 cp -r ./config/nvim $HOME/.config
 
