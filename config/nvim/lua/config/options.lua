@@ -2,9 +2,6 @@
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
--- Set highlight on search
-vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
 vim.o.relativenumber = true
@@ -12,20 +9,23 @@ vim.o.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = "a"
 
+-- Set highlight on search
+vim.o.hlsearch = true
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = "unnamedplus"
 
--- Indenting
-vim.o.tabstop = 4         -- A TAB character looks like 4 spaces
-vim.o.expandtab = true    -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.softtabstop = 4     -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4      -- Number of spaces inserted when indenting
-vim.opt.autoindent = true -- Use current indent level when starting a new line
-
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Indenting
+vim.o.expandtab = true    -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.shiftwidth = 4      -- Number of spaces inserted when indenting
+vim.o.tabstop = 4         -- A TAB character looks like 4 spaces
+vim.o.softtabstop = 4     -- Number of spaces inserted instead of a TAB character
+vim.opt.autoindent = true -- Use current indent level when starting a new line
 
 -- Save undo history
 vim.o.undofile = true
@@ -51,8 +51,10 @@ vim.opt.background = "dark"
 
 vim.opt.backspace = "indent,eol,start" -- Allow backspace on indent, end of line or insert mode start position
 
-vim.opt.splitright = true              -- Always split right
-vim.opt.splitbelow = true              -- Always split below
+vim.o.cursorline = true
 
-vim.opt.scrolloff = 10
+vim.opt.splitright = true -- Always split right
+vim.opt.splitbelow = true -- Always split below
+
+vim.opt.scrolloff = 20
 vim.o.winborder = "rounded"
