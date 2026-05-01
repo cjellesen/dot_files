@@ -35,50 +35,72 @@ local theme = {
                 -- This re-color is based on Mofiqul/vscode
                 -- Just a small recoloring to make it look like JetBrains Rider Dark
 
-                -- Variables
-                ["@variable"] = { fg = "#bdbdbd" },
-                ["@variable.c_sharp"] = { link = "@variable" },
-                ["@variable.member.c_sharp"] = { fg = "#65c3cc" },
-                ["@variable.parameter"] = { fg = "#ed8796" },
-                ["@variable.parameter.c_sharp"] = { link = "@variable.parameter" },
+                -- Namespace
+                ["@lsp.type.namespace.cs"] = { fg = "#c191ff", bold = true },
 
-                ["@keyword.repeat"] = { fg = "#6c95eb", bold = true },
-                ["@keyword.repeat.c_sharp"] = { link = "@keyword.repeat" },
+                -- Interface/Type Parameters
+                ["@lsp.type.interface.cs"] = { fg = "#c191ff", bold = true },
+                ["@lsp.type.typeParameter.cs"] = { fg = "#c191ff", bold = true },
+
+                -- Classes
+                ["@lsp.typemod.class.static.cs"] = { fg = "#c191ff", bold = true },
+                ["@lsp.type.class.cs"] = { fg = "#c191ff", bold = true },
+                ["@lsp.type.recordClass.cs"] = { fg = "#c191ff", bold = true },
+
+                -- Struct/Enum
+                ["@lsp.type.struct.cs"] = { fg = "#E1BFFF", bold = true },
+                ["@lsp.type.recordStruct.cs"] = { fg = "#E1BFFF", bold = true },
+                ["@lsp.type.enum.cs"] = { fg = "#E1BFFF", bold = true },
+
+                -- Event/Delegate
+                ["@lsp.type.event.cs"] = { fg = "#E1BFFF", bold = false },
+                ["@lsp.type.delegate.cs"] = { fg = "#E1BFFF", bold = true },
+
+                -- Method
+                ["@lsp.type.method.cs"] = { fg = "#38C596", bold = true },
+                ["@lsp.type.extensionMethod"] = { fg = "#38C596", bold = true },
+                ["@function.method"] = { fg = "#38C596", bold = true },
+                ["@function.method.call"] = { link = "@function.method" },
+
+                -- Return
+                ["@lsp.type.controlKeyword.cs"] = { fg = "#6c95eb", bold = false },
+                ["@keyword.return"] = { fg = "#6c95eb" },
+                ["@keyword.return.c_sharp"] = { link = "@keyword.return" },
+
+                -- Types
+                ["@lsp.type.keyword.cs"] = { fg = "#6C95EB", bold = false },
+                ["@keyword"] = { fg = "#6C95EB", italic = false },
+                ["@keyword.conditional"] = { fg = "#6C95EB", italic = false },
+                ["@keyword.repeat"] = { fg = "#6C95EB", bold = true },
+
+                -- Comment/Pragma
+                ["@lsp.type.comment.cs"] = { fg = "#85C46C", italic = true },
+                ["@lsp.type.xmlDocCommentText"] = { fg = "#85C46C", italic = true },
+                ["@lsp.type.xmlDocCommentDelimiter"] = { fg = "#85C46C", italic = true },
+                ["@lsp.type.xmlDocCommentName"] = { fg = "#487D34", italic = true },
+                ["@lsp.type.xmlDocCommentAttributeName"] = { fg = "#487D34", italic = true },
+                ["@lsp.type.macro.cs"] = { fg = "#6C95EB", bold = false },
+
+                -- Number
+                ["@lsp.type.number.cs"] = { fg = "#ED94C0", bold = true },
+                ["@number"] = { fg = "#ED94C0", bold = true },
+
+                -- Fields/Variables/Parameters
+                ["@lsp.type.field.cs"] = { fg = "#66C3CC", bold = false },
+                ["@field"] = { fg = "#66C3CC", bold = false },
+                ["@lsp.type.property.cs"] = { fg = "#66C3CC", bold = false, },
+                ["@property"] = { fg = "#66C3CC", bold = false, },
+                ["@lsp.type.parameter.cs"] = { fg = "#ED8796", bold = false },
+                ["@parameter"] = { fg = "#ED8796", bold = false },
+
+                ["@lsp.type.variable.cs"] = { fg = "#BDBDBD", bold = false },
+                ["@variable"] = { fg = "#BDBDBD", bold = false },
+                ["@variable.parameter"] = { fg = "#ED8796" },
+                ["@variable.parameter.c_sharp"] = { link = "@variable.parameter" },
 
                 -- Boolean
                 ["@boolean"] = { fg = "#6c95eb", italic = true },
                 ["@boolean.c_sharp"] = { link = "@boolean" },
-
-                -- Return
-                ["@keyword.return"] = { fg = "#6c95eb" },
-                ["@keyword.return.c_sharp"] = { link = "@keyword.return" },
-
-                -- Method
-                ["@function.method"] = { fg = "#38c596", bold = true },
-                ["@function.method.call"] = { link = "@function.method" },
-                ["@function.method.call.c_sharp"] = { link = "@function.method" },
-                ["@lsp.type.extensionMethod"] = { fg = "#38c596", bold = true },
-
-                -- Types (mots clés)
-                ["@keyword"] = { fg = "#6c95eb", italic = false },
-                ["@keyword.conditional"] = { fg = "#6c95eb", italic = false },
-                ["@keyword.conditional.c_sharp"] = { link = "@keyword.conditional" },
-
-                -- Classes
-                ["@lsp.type.class.cs"] = { fg = "#c191ff", bold = true },
-
-                -- Struct
-                ["@lsp.type.struct.cs"] = { fg = "#93c5c9", bold = true },
-
-                -- Enum
-                ["@lsp.type.enum.cs"] = { fg = "#4EC9B0", bold = true },
-
-                -- Number
-                ["@number"] = { fg = "#e791bc", bold = true },
-                ["@number.c_sharp"] = { link = "@number" },
-
-                -- Comment
-                ["Comment"] = { fg = "#84c26b", italic = true },
             },
         })
         vim.cmd.colorscheme("vscode")
